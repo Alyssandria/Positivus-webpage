@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* Tailwind themes */
+@theme {
+  --color-primary: #B9FF66;
+  --color-secondary: #191A23;
+  --color-tertiary: #F3F3F3;
+}
+
+/* Sitewide styles */
+#root {
+  padding: 2rem 2rem 0;
+}
+
+@media (min-width: 768px) {
+  #root {
+    padding: 4rem 4rem 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  #root {
+    padding: 4rem 6rem 0;
+  }
+}
+
+* {
+  font-family: "Space Grotesk", sans-serif;
+  list-style-type: none;
+}

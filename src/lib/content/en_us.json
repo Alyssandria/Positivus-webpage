@@ -1,0 +1,36 @@
+{
+  "locale": "en_us",
+  "public": {
+    "header": {
+      "nav": {
+        "LOGO": {
+          "PATH": "/"
+        },
+        "ABOUT": {
+          "CONTENT": "About us",
+          "PATH": "/about"
+        },
+        "SERVICES": {
+          "CONTENT": "services",
+          "PATH": "/services"
+        },
+        "USECASE": {
+          "CONTENT": "Use Cases",
+          "PATH": "/usecase"
+        },
+        "PRICING": {
+          "CONTENT": "Pricing",
+          "PATH": "/pricing"
+        },
+        "BLOG": {
+          "CONTENT": "Blog",
+          "PATH": "/blog"
+        },
+        "REQUEST": {
+          "CONTENT": "Request a quote",
+          "PATH": "/"
+        }
+      }
+    }
+  }
+}
