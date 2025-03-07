@@ -7,6 +7,8 @@ const HamburgerLine = ({ className, lineHeight, ...props }: HamburgerProps) => {
   return <div className={cn("w-full h-[3px] bg-black", lineHeight, className)} {...props} />
 }
 
+// TODO: ADD HAMBURGER FUNCTIONALITY
+
 export const Hamburger = ({ className, ...props }: HamburgerProps) => {
   return (
     <div className={cn("w-6 h-4 flex flex-col justify-between", className)} {...props}>
