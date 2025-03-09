@@ -4,7 +4,8 @@
     "header": {
       "nav": {
         "LOGO": {
-          "PATH": "/"
+          "PATH": "/",
+          "CONTENT": ""
         },
         "ABOUT": {
           "CONTENT": "About us",
