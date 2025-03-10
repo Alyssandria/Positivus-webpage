@@ -16,11 +16,11 @@ export const NavLinks = ({ className, ...props }: HTMLAttributes<HTMLUListElemen
     return (
       el[0] === "REQUEST"
         ?
-        <Link linkStyle="button" href={link.PATH} key={link.PATH}>
+        <Link linkStyle="button" href={link.PATH} tabIndex={isActive ? 0 : -1} key={link.PATH}>
           {link.CONTENT}
         </Link >
         :
-        <Link href={link.PATH} key={link.PATH}>
+        <Link tabIndex={isActive ? 0 : -1} href={link.PATH} key={link.PATH}>
           {link.CONTENT}
         </Link>
     )
@@ -30,9 +30,16 @@ export const NavLinks = ({ className, ...props }: HTMLAttributes<HTMLUListElemen
   const NavLinksRef = useRef<HTMLUListElement | null>(null);
   const timeline = useRef<gsap.core.Timeline | null>(null);
   useGSAP(() => {
-    console.log(NavLinksRef)
+    if (!NavLinksRef.current) return
+    gsap.set(NavLinksRef.current, { opacity: 0 })
     timeline.current = gsap.timeline({ paused: true })
-      .to(NavLinksRef.current, { duration: .5, width: "100%", height: "100%" })
+      .to(NavLinksRef.current, { duration: .5, width: "100%", opacity: 1 })
+      .fromTo(
+        gsap.utils.toArray(NavLinksRef.current.children), // Select child elements (links)
+        { opacity: 0, y: 20 }, // Start state
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.3 }, // End state
+        "-=0.3" // Overlap with menu animation
+      );
   }, []);
 
   useEffect(() => {
@@ -40,13 +47,13 @@ export const NavLinks = ({ className, ...props }: HTMLAttributes<HTMLUListElemen
     if (isActive) {
       timeline.current.play()
     } else {
-      timeline.current.reversed(!timeline.current.reversed())
+      timeline.current.reverse()
     }
   }, [isActive])
 
   return (
     <>
-      <ul ref={NavLinksRef} className={cn("absolute bg-blue-300 top-0 right-0 size-1", isActive ? "" : "opacity-0", "nav-links", className)} {...props}>
+      <ul ref={NavLinksRef} className={cn("absolute bg-blue-300 top-0 right-0 h-full w-1", className)} {...props}>
         {links}
       </ul>
       <Hamburger setIsActive={setIsActive} isActive={isActive} />
