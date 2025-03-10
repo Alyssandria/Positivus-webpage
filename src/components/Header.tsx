@@ -10,7 +10,6 @@ export const Header = () => {
         <Link href={content.public.header.nav.LOGO.PATH} className="w-32 inline-flex flex-row items-center justify-center">
           <LogoIcon />
         </Link>
-
         <NavLinks />
       </nav>
     </header>
