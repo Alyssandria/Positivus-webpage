@@ -1,8 +1,8 @@
 {
   "locale": "en_us",
-  "public": {
-    "header": {
-      "nav": {
+  "PUBLIC": {
+    "HEADER": {
+      "NAV": {
         "LOGO": {
           "PATH": "/",
           "CONTENT": ""
@@ -12,7 +12,7 @@
           "PATH": "/about"
         },
         "SERVICES": {
-          "CONTENT": "services",
+          "CONTENT": "Services",
           "PATH": "/services"
         },
         "USECASE": {
@@ -31,6 +31,20 @@
           "CONTENT": "Request a quote",
           "PATH": "/"
         }
+      }
+    },
+    "HERO": {
+      "TITLE": {
+        "CONTENT" : "Navigating the digital landscape for success",
+        "PATH" : "",
+      },
+      "SUB_TITLE": {
+        "CONTENT" : "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+        "PATH" : "",
+      },
+      "CTA": {
+        "CONTENT": "Book a consultation",
+        "ACTION": "/consultation"
       }
     }
   }

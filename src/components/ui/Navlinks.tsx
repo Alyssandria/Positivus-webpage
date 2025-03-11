@@ -15,23 +15,22 @@ export const NavLinks = ({ className, ...props }: HTMLAttributes<HTMLUListElemen
 
   // MEMOIZE navlinksArr
   const linksArr: NavLinksJSON[] = useMemo(() => {
-    return Object.entries(content.public.header.nav).filter(el => el[0] !== "LOGO").map(el => el[1]);
+    return Object.entries(content.PUBLIC.HEADER.NAV).filter(el => el[0] !== "LOGO").map(el => el[1]);
   }, [])
 
   const links = linksArr.map(el => {
     return (
-      el.CONTENT === content.public.header.nav.REQUEST.CONTENT
+      el.CONTENT === content.PUBLIC.HEADER.NAV.REQUEST.CONTENT
         ?
-        <Link href={el.PATH} tabIndex={isActive ? 0 : -1} key={el.PATH}>
+        <Link to={el.PATH} tabIndex={isActive ? 0 : -1} onClick={() => setIsActive(false)} key={el.PATH}>
           {el.CONTENT}
         </Link >
         :
-        <Link tabIndex={isActive ? 0 : -1} href={el.PATH} key={el.PATH}>
+        <Link tabIndex={isActive ? 0 : -1} to={el.PATH} onClick={() => setIsActive(false)} key={el.PATH}>
           {el.CONTENT}
         </Link>
     )
   })
-
 
   // TODO: ANIMATE NAVLINKS
   const { linksRef } = useNavLinksAnimation(isActive)

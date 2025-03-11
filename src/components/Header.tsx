@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <header className="h-[8svh]">
       <nav className="w-full h-full flex justify-between items-center">
-        <Link href={content.public.header.nav.LOGO.PATH} className="w-32 inline-flex flex-row items-center justify-center">
+        <Link to={content.PUBLIC.HEADER.NAV.LOGO.PATH} className="w-32 inline-flex flex-row items-center justify-center">
           <LogoIcon />
         </Link>
         <NavLinks />

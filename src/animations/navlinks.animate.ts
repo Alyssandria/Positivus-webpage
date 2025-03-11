@@ -12,14 +12,16 @@ export const useNavLinksAnimation = (isActive: boolean) => {
     gsap.set(linksRef.current, { opacity: 0 })
     timeline.current = gsap.timeline({ paused: true })
       .to(linksRef.current, { duration: .2, width: "100%", opacity: 1 })
-      .from(linksRef.current.children, { stagger: 0.01, opacity: 0, y: 40 })
+      .from(linksRef.current.children, { duration: 0.1, opacity: 0, y: 10, stagger: { amount: .2 } })
   }, []);
 
   useEffect(() => {
+    if (!timeline.current) return
+
     if (isActive) {
-      timeline.current?.play()
+      timeline.current.play()
     } else {
-      timeline.current?.reversed(!timeline.current.reversed())
+      timeline.current.reversed(!timeline.current.reversed())
     }
   }, [isActive])
 
