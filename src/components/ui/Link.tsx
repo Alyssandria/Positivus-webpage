@@ -7,11 +7,11 @@ interface Navlinkprops extends AnchorHTMLAttributes<HTMLAnchorElement> {
   linkStyle?: "default" | "button_bg" | "button"
 }
 
-const linkVariants = cva("cursor-pointer", {
+const linkVariants = cva("cursor-pointer font-bold text-xl", {
   variants: {
     linkStyle: {
       button_bg: "rounded-lg px-8 py-4 text-white bg-secondary",
-      default: "text-black",
+      default: "text-white",
       button: "border rounded-lg px-8 py-4"
     }
   },

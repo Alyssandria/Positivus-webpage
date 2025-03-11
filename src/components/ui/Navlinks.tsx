@@ -1,59 +1,44 @@
 import { Link } from "../ui/Link"
 import content from "../../lib/content/en_us.json"
-import { HTMLAttributes, useEffect, useRef, useState } from "react"
+import { HTMLAttributes, useMemo, useState } from "react"
 import { cn } from "../../lib/utils";
 import { Hamburger } from "./Hamburger";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { useNavLinksAnimation } from "../../animations/navlinks.animate";
+
+type NavLinksJSON = {
+  CONTENT: string;
+  PATH: string;
+}
 
 export const NavLinks = ({ className, ...props }: HTMLAttributes<HTMLUListElement>) => {
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  // NAVLINKS
-  const linkArr = Object.entries(content.public.header.nav).filter(el => el[0] !== "LOGO")
-  const links = linkArr.map(el => {
-    const link = el[1];
+  // MEMOIZE navlinksArr
+  const linksArr: NavLinksJSON[] = useMemo(() => {
+    return Object.entries(content.public.header.nav).filter(el => el[0] !== "LOGO").map(el => el[1]);
+  }, [])
+
+  const links = linksArr.map(el => {
     return (
-      el[0] === "REQUEST"
+      el.CONTENT === content.public.header.nav.REQUEST.CONTENT
         ?
-        <Link linkStyle="button" href={link.PATH} tabIndex={isActive ? 0 : -1} key={link.PATH}>
-          {link.CONTENT}
+        <Link href={el.PATH} tabIndex={isActive ? 0 : -1} key={el.PATH}>
+          {el.CONTENT}
         </Link >
         :
-        <Link tabIndex={isActive ? 0 : -1} href={link.PATH} key={link.PATH}>
-          {link.CONTENT}
+        <Link tabIndex={isActive ? 0 : -1} href={el.PATH} key={el.PATH}>
+          {el.CONTENT}
         </Link>
     )
   })
-  // TODO: ANIMATE NAVLINKS
-  gsap.registerPlugin(useGSAP);
-  const NavLinksRef = useRef<HTMLUListElement | null>(null);
-  const timeline = useRef<gsap.core.Timeline | null>(null);
-  useGSAP(() => {
-    if (!NavLinksRef.current) return
-    gsap.set(NavLinksRef.current, { opacity: 0 })
-    timeline.current = gsap.timeline({ paused: true })
-      .to(NavLinksRef.current, { duration: .5, width: "100%", opacity: 1 })
-      .fromTo(
-        gsap.utils.toArray(NavLinksRef.current.children), // Select child elements (links)
-        { opacity: 0, y: 20 }, // Start state
-        { opacity: 1, y: 0, stagger: 0.1, duration: 0.3 }, // End state
-        "-=0.3" // Overlap with menu animation
-      );
-  }, []);
 
-  useEffect(() => {
-    if (!timeline.current) return
-    if (isActive) {
-      timeline.current.play()
-    } else {
-      timeline.current.reverse()
-    }
-  }, [isActive])
+
+  // TODO: ANIMATE NAVLINKS
+  const { linksRef } = useNavLinksAnimation(isActive)
 
   return (
     <>
-      <ul ref={NavLinksRef} className={cn("absolute bg-blue-300 top-0 right-0 h-full w-1", className)} {...props}>
+      <ul ref={linksRef} className={cn("flex flex-col p-6 gap-4 justify-center absolute bg-secondary top-0 right-0 h-full w-[1px]", className)} {...props}>
         {links}
       </ul>
       <Hamburger setIsActive={setIsActive} isActive={isActive} />
