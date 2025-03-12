@@ -1,16 +1,48 @@
 import { LogoIcon } from "./icons/Logo"
 import { Link } from "./ui/Link"
 import content from "../lib/content/en_us.json"
-import { NavLinks } from "./ui/Navlinks"
+import { useMemo, useState } from "react"
+import { Hamburger } from "./ui/Hamburger"
+import { useNavLinksAnimation } from "../animations/navlinks.animate"
+
+type NavLinksJSON = {
+  CONTENT: string;
+  PATH: string;
+}
 
 export const Header = () => {
-  return (
-    <header className="h-[8svh]">
-      <nav className="w-full h-full flex justify-between items-center">
-        <Link to={content.PUBLIC.HEADER.NAV.LOGO.PATH} className="w-32 inline-flex flex-row items-center justify-center">
-          <LogoIcon />
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  // MEMOIZE navlinksArr
+  const linksArr: NavLinksJSON[] = useMemo(() => {
+    return Object.entries(content.PUBLIC.HEADER.NAV).filter(el => el[0] !== "LOGO").map(el => el[1]);
+  }, [])
+
+  const links = linksArr.map(el => {
+    return (
+      el.CONTENT === content.PUBLIC.HEADER.NAV.REQUEST.CONTENT
+        ?
+        <Link to={el.PATH} tabIndex={isActive ? 0 : -1} onClick={() => setIsActive(false)} key={el.PATH}>
+          {el.CONTENT}
+        </Link >
+        :
+        <Link tabIndex={isActive ? 0 : -1} to={el.PATH} onClick={() => setIsActive(false)} key={el.PATH}>
+          {el.CONTENT}
         </Link>
-        <NavLinks />
+    )
+  })
+  const { linksRef, logoRef } = useNavLinksAnimation(isActive)
+
+  return (
+    <header className="h-[8svh] sticky top-0 bg-white">
+      <nav className="w-full h-full flex justify-between items-center">
+        <Link to={content.PUBLIC.HEADER.NAV.LOGO.PATH} className="z-10 w-32 text-black inline-flex flex-row items-center justify-center" onClick={() => setIsActive(false)}>
+          <LogoIcon ref={logoRef} />
+        </Link>
+        <ul ref={linksRef} className="flex flex-col p-6 gap-4 justify-center absolute bg-secondary top-0 right-0 h-screen w-[1px]">
+          {links}
+        </ul>
+        <Hamburger setIsActive={setIsActive} isActive={isActive} />
       </nav>
     </header>
   )

@@ -4,14 +4,20 @@ import { gsap } from "gsap"
 
 export const useNavLinksAnimation = (isActive: boolean) => {
   const timeline = useRef<gsap.core.Timeline | null>(null);
+  const logoRef = useRef<SVGSVGElement | null>(null);
   const linksRef = useRef<HTMLUListElement | null>(null);
   gsap.registerPlugin(useGSAP)
 
   useGSAP(() => {
     if (!linksRef.current) return
-    gsap.set(linksRef.current, { opacity: 0 })
+    if (!logoRef.current) return
+
+    const primaryBg = gsap.getProperty(document.documentElement, ("--color-primary"));
+    gsap.set(linksRef.current, { opacity: 0 });
+    gsap.set(logoRef.current, { color: "black" })
     timeline.current = gsap.timeline({ paused: true })
-      .to(linksRef.current, { duration: .2, width: "100%", opacity: 1 })
+      .to(linksRef.current, { duration: .2, width: "100%", opacity: 1, overflow: "hidden", position: "fixed" })
+      .to(logoRef.current, { duration: .1, color: primaryBg })
       .from(linksRef.current.children, { duration: 0.1, opacity: 0, y: 10, stagger: { amount: .2 } })
   }, []);
 
@@ -25,5 +31,5 @@ export const useNavLinksAnimation = (isActive: boolean) => {
     }
   }, [isActive])
 
-  return { linksRef }
+  return { linksRef, logoRef }
 }
