@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { cn, } from "../../lib/utils"
-import { LucideIcon, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef } from "react";
 
@@ -9,7 +9,6 @@ interface HamburgerProps extends React.HTMLAttributes<HTMLDivElement> {
   isActive: boolean
 }
 
-// TODO: ADD HAMBURGER FUNCTIONALITY
 
 export const Hamburger = ({ isActive, setIsActive, className, ...props }: HamburgerProps) => {
 

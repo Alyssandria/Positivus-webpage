@@ -1,7 +1,7 @@
 import { LogoIcon } from "./icons/Logo"
 import { Link } from "./ui/Link"
 import content from "../lib/content/en_us.json"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Hamburger } from "./ui/Hamburger"
 import { useNavLinksAnimation } from "../animations/navlinks.animate"
 import { useHideOnScrollDown } from "../animations/header.animate"
@@ -12,9 +12,18 @@ type NavLinksJSON = {
 }
 
 export const Header = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
   const headerRef = useHideOnScrollDown();
-  const { linksRef, logoRef } = useNavLinksAnimation(isActive)
+  const { linksRef, logoRef } = useNavLinksAnimation(isMenuActive)
+
+  // DISABLE SCROLLING IF MENU IS ACTIVE
+  useEffect(() => {
+    if (isMenuActive) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "auto";
+    }
+  }, [isMenuActive])
 
   // MEMOIZE navlinksArr
   const linksArr: NavLinksJSON[] = useMemo(() => {
@@ -25,11 +34,11 @@ export const Header = () => {
     return (
       el.CONTENT === content.PUBLIC.HEADER.NAV.REQUEST.CONTENT
         ?
-        <Link to={el.PATH} tabIndex={isActive ? 0 : -1} onClick={() => setIsActive(false)} key={el.PATH}>
+        <Link to={el.PATH} tabIndex={isMenuActive ? 0 : -1} onClick={() => setIsMenuActive(false)} key={el.PATH}>
           {el.CONTENT}
         </Link >
         :
-        <Link tabIndex={isActive ? 0 : -1} to={el.PATH} onClick={() => setIsActive(false)} key={el.PATH}>
+        <Link tabIndex={isMenuActive ? 0 : -1} to={el.PATH} onClick={() => setIsMenuActive(false)} key={el.PATH}>
           {el.CONTENT}
         </Link>
     )
@@ -38,13 +47,16 @@ export const Header = () => {
   return (
     <header ref={headerRef} className="h-[8svh] sticky top-0 bg-white">
       <nav className="w-full h-full flex justify-between items-center">
-        <Link to={content.PUBLIC.HEADER.NAV.LOGO.PATH} className="z-10 w-32 text-black inline-flex flex-row items-center justify-center" onClick={() => setIsActive(false)}>
-          <LogoIcon ref={logoRef} />
-        </Link>
-        <ul ref={linksRef} className="flex flex-col p-6 gap-4 justify-center absolute bg-secondary top-0 right-0 h-screen w-[1px]">
-          {links}
+        <ul className="flex justify-between items-center w-full h-full">
+          <Link to={content.PUBLIC.HEADER.NAV.LOGO.PATH} className="z-10 w-32 text-black inline-flex flex-row items-center justify-center" onClick={() => setIsMenuActive(false)}>
+            <LogoIcon ref={logoRef} />
+          </Link>
+
+          <div ref={linksRef} className="fixed flex flex-col p-4 justify-center gap-4 h-full bg-secondary w-1 bottom-0 left-0">
+            {links}
+          </div>
+          <Hamburger setIsActive={setIsMenuActive} isActive={isMenuActive} />
         </ul>
-        <Hamburger setIsActive={setIsActive} isActive={isActive} />
       </nav>
     </header>
   )

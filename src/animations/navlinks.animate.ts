@@ -5,7 +5,7 @@ import { gsap } from "gsap"
 export const useNavLinksAnimation = (isActive: boolean) => {
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const logoRef = useRef<SVGSVGElement | null>(null);
-  const linksRef = useRef<HTMLUListElement | null>(null);
+  const linksRef = useRef<HTMLDivElement | null>(null);
   gsap.registerPlugin(useGSAP)
 
   useGSAP(() => {
@@ -16,7 +16,7 @@ export const useNavLinksAnimation = (isActive: boolean) => {
     gsap.set(linksRef.current, { opacity: 0 });
     gsap.set(logoRef.current, { color: "black" })
     timeline.current = gsap.timeline({ paused: true })
-      .to(linksRef.current, { duration: .2, width: "100%", opacity: 1, overflow: "hidden", position: "fixed" })
+      .to(linksRef.current, { duration: .2, width: "100%", opacity: 1 })
       .to(logoRef.current, { duration: .1, color: primaryBg })
       .from(linksRef.current.children, { duration: 0.1, opacity: 0, y: 10, stagger: { amount: .2 } })
   }, []);

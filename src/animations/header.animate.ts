@@ -8,15 +8,17 @@ export const useHideOnScrollDown = () => {
   const scrollDir = useScrollDirection();
   const timeline = useRef<gsap.core.Timeline | null>(null);
 
-  console.log(header.current);
+  const removeStack = () => {
+    header.current!.style.transform = "none"
+  }
   gsap.registerPlugin(useGSAP);
 
   useGSAP(() => {
     if (!header.current) return;
-    gsap.set(header.current, { opacity: 1, display: "block" })
+
     timeline.current =
-      gsap.timeline({ paused: true })
-        .to(header.current, { duration: .2, y: 0, yPercent: -100, })
+      gsap.timeline({ paused: true, onReverseComplete: removeStack })
+        .to(header.current, { duration: .2, yPercent: -100, opacity: 0, })
   })
 
   useEffect(() => {
