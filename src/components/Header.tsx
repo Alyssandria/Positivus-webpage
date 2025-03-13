@@ -4,6 +4,7 @@ import content from "../lib/content/en_us.json"
 import { useMemo, useState } from "react"
 import { Hamburger } from "./ui/Hamburger"
 import { useNavLinksAnimation } from "../animations/navlinks.animate"
+import { useHideOnScrollDown } from "../animations/header.animate"
 
 type NavLinksJSON = {
   CONTENT: string;
@@ -12,6 +13,8 @@ type NavLinksJSON = {
 
 export const Header = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
+  const headerRef = useHideOnScrollDown();
+  const { linksRef, logoRef } = useNavLinksAnimation(isActive)
 
   // MEMOIZE navlinksArr
   const linksArr: NavLinksJSON[] = useMemo(() => {
@@ -31,10 +34,9 @@ export const Header = () => {
         </Link>
     )
   })
-  const { linksRef, logoRef } = useNavLinksAnimation(isActive)
 
   return (
-    <header className="h-[8svh] sticky top-0 bg-white">
+    <header ref={headerRef} className="h-[8svh] sticky top-0 bg-white">
       <nav className="w-full h-full flex justify-between items-center">
         <Link to={content.PUBLIC.HEADER.NAV.LOGO.PATH} className="z-10 w-32 text-black inline-flex flex-row items-center justify-center" onClick={() => setIsActive(false)}>
           <LogoIcon ref={logoRef} />
