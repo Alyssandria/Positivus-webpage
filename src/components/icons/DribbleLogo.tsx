@@ -1,11 +1,8 @@
-import type { SVGProps } from "react";
-export const DribbleLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={127}
-    height={48}
-    fill="none"
-    {...props}
+import { BrandIcon } from "./BrandIcon";
+export const DribbleLogo = () => (
+  <BrandIcon
+    viewBoxWidth="127"
+    viewBoxHeight="48"
   >
     <g
       clipPath="url(#DribbleLogo_svg__a)"
@@ -25,5 +22,5 @@ export const DribbleLogo = (props: SVGProps<SVGSVGElement>) => (
         <path fill="#fff" d="M.018 0h126.369v48H.017z" />
       </clipPath>
     </defs>
-  </svg>
+  </BrandIcon>
 );

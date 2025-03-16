@@ -1,12 +1,6 @@
-import type { SVGProps } from "react";
-export const ZoomLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={111}
-    height={48}
-    fill="none"
-    {...props}
-  >
+import { BrandIcon } from "./BrandIcon";
+export const ZoomLogo = () => (
+  <BrandIcon viewBoxWidth="111" viewBoxHeight="48">
     <g
       clipPath="url(#ZoomLogo_svg__a)"
       style={{
@@ -25,5 +19,5 @@ export const ZoomLogo = (props: SVGProps<SVGSVGElement>) => (
         <path fill="#fff" d="M.426 0h110.573v48H.426z" />
       </clipPath>
     </defs>
-  </svg>
+  </BrandIcon>
 );

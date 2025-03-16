@@ -1,11 +1,9 @@
 import type { SVGProps } from "react";
-export const HubSpotLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={129}
-    height={48}
-    fill="none"
-    {...props}
+import { BrandIcon } from "./BrandIcon";
+export const HubSpotLogo = () => (
+  <BrandIcon
+    viewBoxWidth={"129"}
+    viewBoxHeight={"48"}
   >
     <g
       clipPath="url(#HubSpotLogo_svg__a)"
@@ -27,5 +25,5 @@ export const HubSpotLogo = (props: SVGProps<SVGSVGElement>) => (
         <path fill="#fff" d="M.293 0h128.626v48H.293z" />
       </clipPath>
     </defs>
-  </svg>
+  </BrandIcon>
 );

@@ -1,11 +1,8 @@
-import type { SVGProps } from "react";
-export const NotionLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={147}
-    height={48}
-    fill="none"
-    {...props}
+import { BrandIcon } from "./BrandIcon";
+export const NotionLogo = () => (
+  <BrandIcon
+    viewBoxWidth={"147"}
+    viewBoxHeight={"48"}
   >
     <g
       fill="#000"
@@ -26,5 +23,5 @@ export const NotionLogo = (props: SVGProps<SVGSVGElement>) => (
         <path fill="#fff" d="M.824 0h145.551v48H.825z" />
       </clipPath>
     </defs>
-  </svg>
+  </BrandIcon>
 );

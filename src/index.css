@@ -11,25 +11,9 @@
 /* Sitewide styles */
 #root {
   overflow-x: clip;
-  padding: 1rem 1rem 0;
-  height: 600vh;
-}
-
-@media (min-width: 768px) {
-  #root {
-    padding: 3rem 3rem 0;
-  }
-}
-
-@media (min-width: 1280px) {
-  #root {
-    padding: 4rem 6rem 0;
-  }
 }
 
 * {
   font-family: "Space Grotesk", sans-serif;
   list-style-type: none;
 }
-
-/* UTILS */

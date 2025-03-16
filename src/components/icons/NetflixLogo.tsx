@@ -1,11 +1,8 @@
-import type { SVGProps } from "react";
-export const NetflixLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={126}
-    height={48}
-    fill="none"
-    {...props}
+import { BrandIcon } from "./BrandIcon";
+export const NetflixLogo = () => (
+  <BrandIcon
+    viewBoxWidth={"126"}
+    viewBoxHeight={"48"}
   >
     <g
       clipPath="url(#NetflixLogo_svg__a)"
@@ -23,5 +20,5 @@ export const NetflixLogo = (props: SVGProps<SVGSVGElement>) => (
         <path fill="#fff" d="M.28 0h125.24v48H.28z" />
       </clipPath>
     </defs>
-  </svg>
+  </BrandIcon>
 );
