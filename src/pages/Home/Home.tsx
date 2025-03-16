@@ -7,30 +7,36 @@ import { NetflixLogo } from "../../components/icons/NetflixLogo"
 import { NotionLogo } from "../../components/icons/NotionLogo"
 import { ZoomLogo } from "../../components/icons/ZoomLogo"
 import { Link } from "../../components/ui/Link"
-import content from "../../lib/content/en_us.json"
+import CONTENT from "../../lib/content/en_us.json"
 
-// TODO: FINISH LANDING PAGE
 export const Home = () => {
   const { brandsRowUpper, brandsRowLower } = useBrandsAnimation();
   return (
     <>
-      <section className="p-4 w-full space-y-6">
-        <h1 className="text-4xl font-medium">{content.PUBLIC.HERO.TITLE.CONTENT}</h1>
-        <HeroIllustration className="w-full" />
-        <p className="text-sm">{content.PUBLIC.HERO.SUB_TITLE.CONTENT}</p>
-        <Link to={content.PUBLIC.HERO.CTA.ACTION} linkStyle="button_bg" className="inline-block w-full text-center text-base">{content.PUBLIC.HERO.CTA.CONTENT}</Link>
+      <section className="w-full">
+        <div className="p-4 space-y-6">
+          <h1 className="text-4xl font-medium">{CONTENT.PUBLIC.MAIN.HOME.HERO.TITLE.CONTENT}</h1>
+          <HeroIllustration className="w-full" />
+          <p className="text-sm">{CONTENT.PUBLIC.MAIN.HOME.HERO.SUB_TITLE.CONTENT}</p>
+          <Link to={CONTENT.PUBLIC.MAIN.HOME.HERO.CTA.ACTION} linkStyle="button_bg" className="inline-block w-full text-center text-base">{CONTENT.PUBLIC.MAIN.HOME.HERO.CTA.CONTENT}</Link>
+        </div>
+        <div>
+          <div ref={brandsRowUpper} className="flex justify-around w-full items-center top-0" >
+            <AmazonLogo />
+            <DribbleLogo />
+            <HubSpotLogo />
+          </div>
+          <div ref={brandsRowLower} className="flex gap-4 w-full items-center bottom-0">
+            <NetflixLogo />
+            <NotionLogo />
+            <ZoomLogo />
+          </div>
+        </div>
       </section>
-      <section className="relative">
-        <div ref={brandsRowUpper} className="flex justify-around w-full items-center top-0" >
-          <AmazonLogo />
-          <DribbleLogo />
-          <HubSpotLogo />
-        </div>
-        <div ref={brandsRowLower} className="flex gap-4 w-full items-center bottom-0">
-          <NetflixLogo />
-          <NotionLogo />
-          <ZoomLogo />
-        </div>
+      {/* TODO: FINISH SERVICES SECTION */}
+      <section className="p-4">
+        <h1>{CONTENT.PUBLIC.MAIN.HOME.SERVICES.TITLE.CONTENT}</h1>
+        <p>{CONTENT.PUBLIC.MAIN.HOME.SERVICES.SUB_TITLE.CONTENT}</p>
       </section>
     </>
   )

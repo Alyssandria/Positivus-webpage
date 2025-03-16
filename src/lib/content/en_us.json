@@ -33,18 +33,94 @@
         }
       }
     },
-    "HERO": {
-      "TITLE": {
-        "CONTENT": "Navigating the digital landscape for success",
-        "PATH": ""
-      },
-      "SUB_TITLE": {
-        "CONTENT": "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
-        "PATH": ""
-      },
-      "CTA": {
-        "CONTENT": "Book a consultation",
-        "ACTION": "/consultation"
+    "MAIN": {
+      "HOME": {
+        "HERO": {
+          "TITLE": {
+            "CONTENT": "Navigating the digital landscape for success",
+            "PATH": ""
+          },
+          "SUB_TITLE": {
+            "CONTENT": "Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.",
+            "PATH": ""
+          },
+          "CTA": {
+            "CONTENT": "Book a consultation",
+            "ACTION": "/consultation"
+          }
+        },
+        "SERVICES": {
+          "TITLE": {
+            "CONTENT": "SERVICES",
+            "PATH": ""
+          },
+          "SUB_TITLE": {
+            "CONTENT": "At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:",
+            "PATH": ""
+          },
+          "CARDS": {
+            "SEO": {
+              "TITLE": {
+                "CONTENT": "Search engine optimization",
+                "PATH": ""
+              },
+              "CTA": {
+                "CONTENT": "Learn More",
+                "ACTION": "/learn-seo"
+              }
+            },
+            "PPC_ADVERT": {
+              "TITLE": {
+                "CONTENT": "Pay-per-click advertising",
+                "PATH": ""
+              },
+              "CTA": {
+                "CONTENT": "Learn More",
+                "ACTION": "/learn-ppc_advert"
+              }
+            },
+            "SOCMED": {
+              "TITLE": {
+                "CONTENT": "Social Media Marketing",
+                "PATH": ""
+              },
+              "CTA": {
+                "CONTENT": "Learn More",
+                "ACTION": "/learn-socmed"
+              }
+            },
+            "EMAIL": {
+              "TITLE": {
+                "CONTENT": "Email Marketing",
+                "PATH": ""
+              },
+              "CTA": {
+                "CONTENT": "Learn More",
+                "ACTION": "/learn-email"
+              }
+            },
+            "CONTENT_CREATE": {
+              "TITLE": {
+                "CONTENT": "Content Creation",
+                "PATH": ""
+              },
+              "CTA": {
+                "CONTENT": "Learn More",
+                "ACTION": "/learn-content_create"
+              }
+            },
+            "ANALYTICS": {
+              "TITLE": {
+                "CONTENT": "Analytics and Tracking",
+                "PATH": ""
+              },
+              "CTA": {
+                "CONTENT": "Learn More",
+                "ACTION": "/learn-analytics"
+              }
+            }
+          }
+        }
       }
     }
   }
