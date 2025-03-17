@@ -61,7 +61,10 @@
           "CARDS": {
             "SEO": {
               "TITLE": {
-                "CONTENT": "Search engine optimization",
+                "LABEL": [
+                  "Search engine",
+                  "optimization"
+                ],
                 "PATH": ""
               },
               "CTA": {
@@ -71,7 +74,10 @@
             },
             "PPC_ADVERT": {
               "TITLE": {
-                "CONTENT": "Pay-per-click advertising",
+                "LABEL": [
+                  "Pay-per-click",
+                  "advertising"
+                ],
                 "PATH": ""
               },
               "CTA": {
@@ -81,7 +87,10 @@
             },
             "SOCMED": {
               "TITLE": {
-                "CONTENT": "Social Media Marketing",
+                "LABEL": [
+                  "Social Media",
+                  "Marketing"
+                ],
                 "PATH": ""
               },
               "CTA": {
@@ -91,7 +100,10 @@
             },
             "EMAIL": {
               "TITLE": {
-                "CONTENT": "Email Marketing",
+                "LABEL": [
+                  "Email",
+                  "Marketing"
+                ],
                 "PATH": ""
               },
               "CTA": {
@@ -101,7 +113,10 @@
             },
             "CONTENT_CREATE": {
               "TITLE": {
-                "CONTENT": "Content Creation",
+                "LABEL": [
+                  "Content",
+                  "Creation"
+                ],
                 "PATH": ""
               },
               "CTA": {
@@ -111,7 +126,10 @@
             },
             "ANALYTICS": {
               "TITLE": {
-                "CONTENT": "Analytics and Tracking",
+                "LABEL": [
+                  "Analytics and",
+                  "Tracking"
+                ],
                 "PATH": ""
               },
               "CTA": {

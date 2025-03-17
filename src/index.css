@@ -8,6 +8,17 @@
   --color-tertiary: #F3F3F3;
 }
 
+@layer components {
+  .section-heading {
+    background-color: var(--color-primary);
+    padding: 4px;
+    border-radius: 7px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: min-content;
+  }
+}
+
 /* Sitewide styles */
 #root {
   overflow-x: clip;
