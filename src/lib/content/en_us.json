@@ -137,6 +137,20 @@
                 "ACTION": "/learn-analytics"
               }
             }
+          },
+          "PROPOSAL": {
+            "TITLE": {
+              "CONTENT": "Let’s make things happen",
+              "PATH": ""
+            },
+            "SUB_TITLE": {
+              "CONTENT": "Contact us today to learn more about how our digital marketing services can help your business grow and succeed online.",
+              "PATH": ""
+            },
+            "CTA": {
+              "CONTENT": "Get your free proposal",
+              "ACTION": "/service-proposal"
+            }
           }
         }
       }

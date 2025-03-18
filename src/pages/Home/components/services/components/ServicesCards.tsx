@@ -4,30 +4,40 @@ import { CardLabel } from "./CardLabel.tsx"
 import { cn } from "@/lib/utils.ts"
 import { Link } from "@/components/ui/Link.tsx"
 
+export interface serviceCardCustomStyles {
+  roundedLabels?: {
+    bg?: string
+  },
+  linkIcon?: {
+    arrowBg?: string
+    circleBg?: string
+  }
+}
+
 interface ServiceCardProps extends HTMLAttributes<HTMLDivElement> {
   labels: string[],
   link: string,
-  customStyle?: undefined
+  customStyles?: serviceCardCustomStyles,
   Icon: ComponentType<SVGProps<SVGSVGElement>>
 }
-export const ServiceCard = ({ labels: title, link, Icon, className, ...props }: ServiceCardProps) => {
-  console.log(title);
+export const ServiceCard = ({ labels: title, link, Icon, className, customStyles, ...props }: ServiceCardProps) => {
   const [labelUpper, labelLower] = title
 
   return (
-    <div className={cn("p-8 rounded-[45px] space-y-6 border-black border-1", className)} {...props}>
-      <CardLabel labelLower={labelLower} labelUpper={labelUpper} />
-      <div className="w-full flex">
-        <div className="w-1/2 relative">
-          <Link to={link}>
-            <LinkArrowIcon className="size-8 absolute bottom-0 left-0" />
-          </Link>
-          <span className="hidden">Learn More</span>
-        </div>
-        <div className="flex-auto">
-          <Icon className="w-30 m-auto" />
+    <Link to={link}>
+      <div className={cn("p-8 rounded-[45px] space-y-6 border-black border-1 service-card-shadow", className)} {...props}>
+        <CardLabel labelLower={labelLower} labelUpper={labelUpper} bg={customStyles?.roundedLabels?.bg} />
+        <div className="w-full flex">
+          <div className="w-1/2 relative">
+            <LinkArrowIcon className="size-8 absolute bottom-0 left-0" arrowBG={customStyles?.linkIcon?.arrowBg} circleBG={customStyles?.linkIcon?.circleBg} />
+            <span className="hidden">Learn More</span>
+          </div>
+          <div className="flex-auto">
+            <Icon className="w-30 m-auto" />
+          </div>
         </div>
       </div>
-    </div>
+
+    </Link>
   )
 }

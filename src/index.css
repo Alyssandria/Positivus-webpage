@@ -12,10 +12,15 @@
   .section-heading {
     background-color: var(--color-primary);
     padding: 4px;
+    text-align: center;
     border-radius: 7px;
     font-size: 1.5rem;
     font-weight: 600;
-    width: min-content;
+    width: max-content
+  }
+
+  .service-card-shadow {
+    box-shadow: 0px 5px var(--color-secondary);
   }
 }
 

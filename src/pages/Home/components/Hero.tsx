@@ -1,13 +1,13 @@
-import { useBrandsAnimation } from "../../../animations/brands.animate";
-import { AmazonLogo } from "../../../components/icons/AmazonLogo";
-import { DribbleLogo } from "../../../components/icons/DribbleLogo";
-import { HeroIllustration } from "../../../components/icons/HeroIllustration"
-import { HubSpotLogo } from "../../../components/icons/HubSpotLogo";
-import { NetflixLogo } from "../../../components/icons/NetflixLogo";
-import { NotionLogo } from "../../../components/icons/NotionLogo";
-import { ZoomLogo } from "../../../components/icons/ZoomLogo";
-import { Link } from "../../../components/ui/Link"
-import CONTENT from "../../../lib/content/en_us.json"
+import { useBrandsAnimation } from "@/animations/brands.animate";
+import { AmazonLogo } from "@/components/icons/AmazonLogo";
+import { DribbleLogo } from "@/components/icons/DribbleLogo";
+import { HeroIllustration } from "@/components/icons/HeroIllustration"
+import { HubSpotLogo } from "@/components/icons/HubSpotLogo";
+import { NetflixLogo } from "@/components/icons/NetflixLogo";
+import { NotionLogo } from "@/components/icons/NotionLogo";
+import { ZoomLogo } from "@/components/icons/ZoomLogo";
+import { Link } from "@/components/ui/Link"
+import CONTENT from "@/lib/content/en_us.json"
 
 export const Hero = () => {
   const { brandsRowUpper, brandsRowLower } = useBrandsAnimation();
