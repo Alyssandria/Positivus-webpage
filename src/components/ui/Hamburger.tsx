@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { cn, } from "../../lib/utils"
+import { cn, } from "@/lib/utils"
 import { Menu, X } from "lucide-react"
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef } from "react";

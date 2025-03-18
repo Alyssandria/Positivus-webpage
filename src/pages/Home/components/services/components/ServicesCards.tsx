@@ -1,8 +1,8 @@
 import { ComponentType, HTMLAttributes, SVGProps } from "react"
-import { LinkArrowIcon } from "../../icons/LinkArrowIcon"
-import { CardLabel } from "./CardLabel"
-import { cn } from "../../../lib/utils"
-import { Link } from "../../ui/Link"
+import { LinkArrowIcon } from "@/components/icons/LinkArrowIcon.tsx"
+import { CardLabel } from "./CardLabel.tsx"
+import { cn } from "@/lib/utils.ts"
+import { Link } from "@/components/ui/Link.tsx"
 
 interface ServiceCardProps extends HTMLAttributes<HTMLDivElement> {
   labels: string[],

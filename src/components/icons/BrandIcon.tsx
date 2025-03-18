@@ -1,5 +1,5 @@
 import { ReactNode, SVGProps } from "react"
-import { cn } from "../../lib/utils"
+import { cn } from "@/lib/utils"
 
 interface BrandIconProps extends SVGProps<SVGSVGElement> {
   viewBoxWidth: string,
