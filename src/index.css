@@ -22,6 +22,11 @@
   .service-card-shadow {
     box-shadow: 0px 5px var(--color-secondary);
   }
+
+  .cards-swipe {
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
 }
 
 /* Sitewide styles */

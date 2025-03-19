@@ -6,6 +6,7 @@ import { ServiceSocmedIcon } from "@/components/icons/ServiceSocmedIcon"
 import { ServiceEmailIcon } from "@/components/icons/ServiceEmailIcon"
 import { ServiceContentIcon } from "@/components/icons/ServiceContentIcon"
 import { ServiceAnalyticsIcon } from "@/components/icons/ServiceAnalyticsIcon"
+import { Proposal } from "./components/Proposal"
 export const Services = () => {
   const sectionTitle = CONTENT.PUBLIC.MAIN.HOME.SERVICES.TITLE.CONTENT
   const sectionSubTitle = CONTENT.PUBLIC.MAIN.HOME.SERVICES.SUB_TITLE.CONTENT
@@ -40,7 +41,7 @@ export const Services = () => {
     <section className="p-4 space-y-6">
       <h2 className="text-center"><span className="section-heading">{sectionTitle}</span></h2>
       <p className="text-center">{sectionSubTitle}</p>
-      <div className="cards space-y-6">
+      <div className="cards space-y-4">
         <ServiceCard
           link={seoLink}
           labels={seoLabels}
@@ -109,6 +110,10 @@ export const Services = () => {
             }
           }}
         />
+      </div>
+
+      <div>
+        <Proposal />
       </div>
     </section>
   )

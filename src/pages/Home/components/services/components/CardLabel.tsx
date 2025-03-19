@@ -17,7 +17,7 @@ const RoundedLabel = ({ bg, label }: RoundedLabelProps) => {
 
 export const CardLabel = ({ labelLower, labelUpper, bg }: CardLabelProps) => {
   return (
-    <h3 className="px-[4px] py-[2px] inline-flex flex-col font-medium text-xl text-black">
+    <h3 className="px-[4px] py-[2px] inline-flex flex-col font-medium text-2xl text-black">
       <RoundedLabel label={labelUpper} bg={bg} />
       <RoundedLabel label={labelLower} bg={bg} />
     </h3>
