@@ -5,22 +5,22 @@ export const WorkProcess = () => {
   const SUBTITLE = CONTENT.PUBLIC.MAIN.HOME.WORKPROCESS.SUB_TITLE
   const PROCESS = CONTENT.PUBLIC.MAIN.HOME.WORKPROCESS.ACCORDION
 
-  const accordion = PROCESS.map((el) => {
-    return <Accordion data={el} />
+  const accordion = PROCESS.map((el, i) => {
+    return <Accordion data={el} key={el.TITLE} index={i} />
   })
 
   // TODO: FINISH ACCORDION
   return (
-    <section className="p-4">
+    <section className="p-4 space-y-6">
       <div className="space-y-6">
         <h3 className="text-center">
           <span className="section-heading">{TITLE}</span>
         </h3>
         <p className="text-center font-medium">{SUBTITLE}</p>
       </div>
-      <ul>
+      <div className="space-y-6">
         {accordion}
-      </ul>
+      </div>
     </section>
   )
 }
