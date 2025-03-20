@@ -22,11 +22,11 @@ export const useAccordionAnimation = () => {
         backgroundColor: primaryBG,
       })
       .to(plusIconRef.current, {
-        duration: .1,
+        duration: .2,
         rotate: 90,
         display: "none"
       }).to(minusIconRef.current, {
-        duration: .1,
+        duration: .2,
         display: "block"
       })
       .to(contentRef.current, {
