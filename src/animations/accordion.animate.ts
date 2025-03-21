@@ -41,7 +41,7 @@ export const useAccordionAnimation = () => {
           return `${contentRef.current!.scrollHeight}px`
         },
         visibility: "visible",
-      })
+      }, "-=.5")
   })
 
   useEffect(() => {
