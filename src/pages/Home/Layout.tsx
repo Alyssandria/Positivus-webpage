@@ -1,7 +1,8 @@
-import { Hero } from "./components/Hero"
-import { WorkProcess } from "./components/process/WorkProcess"
-import { Services } from "./components/services/Services"
-import { CaseStudy } from "./components/usecases/CaseStudy"
+import { Hero } from "./sections/Hero"
+import { WorkProcess } from "./sections/process/WorkProcess"
+import { Services } from "./sections/services/Services"
+import { Teams } from "./sections/team/Team"
+import { CaseStudy } from "./sections/usecases/CaseStudy"
 
 export const Layout = () => {
   return (
@@ -10,6 +11,7 @@ export const Layout = () => {
       <Services />
       <CaseStudy />
       <WorkProcess />
+      <Teams />
     </>
   )
 }

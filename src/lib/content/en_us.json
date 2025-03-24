@@ -215,6 +215,48 @@
               "CONTENT": "Based on the data and insights gathered from the reports, we will make recommendations for further improvement. This may involve refining existing strategies, exploring new opportunities, or adjusting tactics to better align with your business goals."
             }
           ]
+        },
+        "TEAM": {
+          "TITLE": "Team",
+          "SUB_TITLE": "Meet the skilled and experienced team behind our successful digital marketing startegies.",
+          "CARDS": [
+            {
+              "NAME": "John Smith",
+              "TITLE": "CEO and Founder",
+              "BIO": "10+ years of experience in digital marketing. Expertise in SEO, PPC, and content strategy",
+              "PROFILE": "/john_smith_profile.jpg"
+            },
+            {
+              "NAME": "Emily Johnson",
+              "TITLE": "PPC Manager",
+              "BIO": "3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis",
+              "PROFILE": "/emily_johnson_profile.jpg"
+            },
+            {
+              "NAME": "Jane Doe",
+              "TITLE": "Director of Operation",
+              "BIO": "7+ years of experience in project management and team leadership. Strong organizational and communication skills",
+              "PROFILE": "/jane_doe_profile.jpg"
+            },
+            {
+              "NAME": "Michael Brown",
+              "TITLE": "Senior SEO Specialist",
+              "BIO": "5+ years of experience in SEO and content creation. Proficient in keyword research and on-page Optimization",
+              "PROFILE": "/michael_brown_profile.jpg"
+            },
+            {
+              "NAME": "Brian Williams",
+              "TITLE": "Social Media Specialist",
+              "BIO": "4+ years of experience in social media marketing. Proficient in creating and scheduling content, analyzing metrics, and building engagement",
+              "PROFILE": "/brian_williams_profile.jpg"
+            },
+            {
+              "NAME": "Sarah Kim",
+              "TITLE": "Content Creator",
+              "BIO": "2+ years of experience in writing and editing Skilled in creating compelling, SEO-optimized content for various industries",
+              "PROFILE": "/sarah_kim_profile.jpg"
+            }
+          ]
         }
       }
     }
