@@ -6,6 +6,9 @@
   --color-primary: #B9FF66;
   --color-secondary: #191A23;
   --color-tertiary: #F3F3F3;
+  --spacing-card: 40px 30px;
+  --spacing-card-mob: 40px 50px;
+  --breakpoint-xs: 25rem;
 }
 
 @layer components {

@@ -219,6 +219,10 @@
         "TEAM": {
           "TITLE": "Team",
           "SUB_TITLE": "Meet the skilled and experienced team behind our successful digital marketing startegies.",
+          "CTA": {
+            "CONTENT": "See all team",
+            "ACTION": "/teams"
+          },
           "CARDS": [
             {
               "NAME": "John Smith",
