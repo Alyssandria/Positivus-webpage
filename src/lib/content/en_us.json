@@ -261,6 +261,42 @@
               "PROFILE": "/sarah_kim_profile.jpg"
             }
           ]
+        },
+        "TESTIMONIALS" : {
+          "TITLE" : "Testimonials",
+          "SUB_TITLE" : "Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services",
+          "CLIENTS" : [
+            {
+              "NAME" : "John Smith",
+              "POSITION" : "Marketing Director at XYZ Corp",
+              "MESSAGE" : "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence."
+            },
+            {
+              "NAME": "Alice Johnson",
+              "POSITION": "CEO at InnovateTech",
+              "MESSAGE": "Positivus has transformed our online presence, increasing engagement and conversions. Their strategic approach and commitment to excellence are unmatched!"
+            },
+            {
+              "NAME": "Michael Brown",
+              "POSITION": "Head of Sales at Global Solutions",
+              "MESSAGE": "The team at Positivus helped us optimize our digital strategy, resulting in a 40% boost in qualified leads. Highly recommend their services!"
+            },
+            {
+              "NAME": "Sarah Lee",
+              "POSITION": "Marketing Manager at BrightFuture Inc.",
+              "MESSAGE": "Thanks to Positivus, our brand visibility has skyrocketed. Their expertise in SEO and content marketing has given us a competitive edge."
+            },
+            {
+              "NAME": "David Wilson",
+              "POSITION": "Founder of StartUp Success",
+              "MESSAGE": "Working with Positivus has been a game-changer. Their insights and execution have helped our startup scale rapidly in a competitive market."
+            },
+            {
+              "NAME": "Emma Davis",
+              "POSITION": "CMO at GreenTech Solutions",
+              "MESSAGE": "Positivus' team is not just a service provider; they are a true partner in our growth. Their digital strategies have delivered tangible results!"
+            }
+          ]
         }
       }
     }
