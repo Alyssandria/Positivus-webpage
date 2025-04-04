@@ -2,7 +2,7 @@ import CONTENT from "@/lib/content/en_us.json"
 import { ClientTestimony } from "./components/ClientTestimony"
 import { MoveLeft, MoveRight } from "lucide-react"
 import { CarouselIcon } from "@/components/icons/CarouselIcon"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, UIEvent } from "react"
 export const Testimonials = () => {
   const TITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.TITLE;
   const SUBTITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.SUB_TITLE;
@@ -15,9 +15,11 @@ export const Testimonials = () => {
   })
 
   // CAROUSEL LOGIC
+  const STEP = 1 // AMOUNT TO DECREMENT OR INCREMENT BY
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const nextButton = useRef<HTMLButtonElement | null>(null)
-  const prevButton = useRef<HTMLButtonElement | null>(null)
+  const carouselContainer = useRef<HTMLDivElement | null>(null);
+  const nextButton = useRef<HTMLButtonElement | null>(null);
+  const prevButton = useRef<HTMLButtonElement | null>(null);
 
   const carouselIcons = CLIENTS.map((_, i) => {
     return (
@@ -29,40 +31,40 @@ export const Testimonials = () => {
     if (!button.current) return;
 
     if (condition) {
-      button.current.disabled = true
+      button.current.disabled = true;
       button.current.classList.add("carousel-disabled");
     } else {
+      button.current.disabled = false;
       button.current.classList.remove("carousel-disabled");
     }
   }
 
-  useEffect(() => {
-    if (!nextButton.current || !prevButton.current) return
+  const handleClickPrev = () => {
+    if (!carouselContainer.current) return;
 
-    // DISABLE BUTTONS
-    toggleCarouselButtonState(prevButton, activeIndex === 0);
-    toggleCarouselButtonState(nextButton, activeIndex === CLIENTS.length - 1);
+    setActiveIndex((prev: number) => Math.max(0, prev - STEP));
+    const carouselElemWidth = carouselContainer.current.firstElementChild!.getBoundingClientRect().width;
+    const containerGap = parseFloat(window.getComputedStyle(carouselContainer.current).gap);
 
+    // SCROLL THE ELEMENT BY THE ELEMENT WIDTH + GAP
+    carouselContainer.current.scrollLeft = carouselContainer.current.scrollLeft - (carouselElemWidth + containerGap);
+  }
 
-    const handleNext = () => {
-      setActiveIndex((prev) => prev + 1);
-    }
+  const handleCLickNext = () => {
+    if (!carouselContainer.current) return;
 
-    const handlePrev = () => {
-      setActiveIndex((prev) => prev - 1);
-    }
+    setActiveIndex((prev: number) => Math.min(CLIENTS.length - 1, prev + STEP));
+    const carouselElemWidth = carouselContainer.current.firstElementChild!.getBoundingClientRect().width;
+    const containerGap = parseFloat(window.getComputedStyle(carouselContainer.current).gap);
 
-    nextButton.current.addEventListener("click", handleNext);
-    prevButton.current.addEventListener("click", handlePrev);
+    // SCROLL THE ELEMENT BY THE ELEMENT WIDTH + GAP
+    carouselContainer.current.scrollLeft = (activeIndex + STEP) * (carouselElemWidth + containerGap);
+  }
 
+  function handleCarouselNav(event: UIEvent<HTMLDivElement>): void {
+    // TODO: HANDLE SWIP SCROLL
+  }
 
-    return () => {
-      nextButton.current?.removeEventListener("click", handleNext);
-      prevButton.current?.removeEventListener("click", handlePrev);
-    }
-  }, [activeIndex, nextButton, prevButton])
-
-  console.log(activeIndex);
   return (
     <section className="p-4 space-y-6">
       <div className="space-y-6">
@@ -73,18 +75,18 @@ export const Testimonials = () => {
       </div>
 
       <div className="bg-secondary">
-        <div className="flex p-8 rounded-[45px] overflow-clip space-x-10">
+        <div ref={carouselContainer} className="w-full h-max flex p-8 rounded-[45px] cards-swipe overflow-x-scroll gap-10" onScroll={handleCarouselNav}>
           {clientCards}
         </div>
 
         <div className="flex justify-around items-center">
-          <button ref={prevButton}>
+          <button onClick={handleClickPrev} className={activeIndex === 0 ? "carousel-disabled" : ""} disabled={activeIndex === 0}>
             <MoveLeft className="stroke-white size-8" />
           </button>
           <div className="flex gap-2">
             {carouselIcons}
           </div>
-          <button ref={nextButton}>
+          <button onClick={handleCLickNext} className={activeIndex === CLIENTS.length - 1 ? "carousel-disabled" : ""} disabled={activeIndex === CLIENTS.length - 1}>
             <MoveRight className="stroke-white size-8" />
           </button>
         </div>

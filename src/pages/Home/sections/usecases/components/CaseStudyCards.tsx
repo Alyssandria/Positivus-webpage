@@ -11,7 +11,7 @@ export const CaseStudyCards = () => {
         </div>
 
         <Link to={el.CTA.PATH} className="font-medium text-base text-primary inline-flex items-end gap-2">
-          <span className="">
+          <span>
             {el.CTA.CONTENT}
           </span>
           <LinkArrowIcon className="size-8" />
