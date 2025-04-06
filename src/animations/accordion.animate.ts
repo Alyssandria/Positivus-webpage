@@ -37,7 +37,6 @@ export const useAccordionAnimation = () => {
         position: "relative",
         display: "block",
         maxHeight: function() {
-          console.log(contentRef.current!.firstElementChild?.scrollHeight);
           return `${contentRef.current!.scrollHeight}px`
         },
         visibility: "visible",

@@ -9,7 +9,6 @@ export const WorkProcess = () => {
     return <Accordion data={el} key={el.TITLE} index={i} />
   })
 
-  // TODO: FINISH ACCORDION
   return (
     <section className="p-4 space-y-6">
       <div className="space-y-6">

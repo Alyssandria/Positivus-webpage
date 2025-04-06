@@ -2,24 +2,50 @@ import CONTENT from "@/lib/content/en_us.json"
 import { ClientTestimony } from "./components/ClientTestimony"
 import { MoveLeft, MoveRight } from "lucide-react"
 import { CarouselIcon } from "@/components/icons/CarouselIcon"
-import { useEffect, useRef, useState, UIEvent } from "react"
+import { useRef, useState, useEffect } from "react"
 export const Testimonials = () => {
   const TITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.TITLE;
   const SUBTITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.SUB_TITLE;
 
   const CLIENTS = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.CLIENTS;
-  const clientCards = CLIENTS.map(data => {
+  const clientCardRefs = useRef<(HTMLElement | null)[]>([])
+  const clientCards = CLIENTS.map((data, i) => {
     return (
-      <ClientTestimony key={data.NAME} data={data} />
+      <ClientTestimony key={data.NAME} data={data} ref={(el) => { clientCardRefs.current[i] = el }} />
     )
   })
+
 
   // CAROUSEL LOGIC
   const STEP = 1 // AMOUNT TO DECREMENT OR INCREMENT BY
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const carouselContainer = useRef<HTMLDivElement | null>(null);
-  const nextButton = useRef<HTMLButtonElement | null>(null);
-  const prevButton = useRef<HTMLButtonElement | null>(null);
+
+  const intersectionObserver = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    if (!carouselContainer.current) return;
+    intersectionObserver.current = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const visibleElement = entry.target.firstElementChild;
+          clientCardRefs.current.forEach((el, i) => {
+            if (el?.firstElementChild === visibleElement) {
+              setActiveIndex(i);
+            }
+          })
+        }
+      },);
+    }, { root: carouselContainer.current, threshold: .90 });
+
+    clientCardRefs.current.forEach((el) => {
+      if (el) intersectionObserver.current!.observe(el)
+    });
+  }, [activeIndex]);
+
+
+
+
 
   const carouselIcons = CLIENTS.map((_, i) => {
     return (
@@ -27,43 +53,17 @@ export const Testimonials = () => {
     )
   })
 
-  const toggleCarouselButtonState = (button: React.RefObject<HTMLButtonElement | null>, condition: boolean): void => {
-    if (!button.current) return;
-
-    if (condition) {
-      button.current.disabled = true;
-      button.current.classList.add("carousel-disabled");
-    } else {
-      button.current.disabled = false;
-      button.current.classList.remove("carousel-disabled");
-    }
-  }
-
   const handleClickPrev = () => {
     if (!carouselContainer.current) return;
-
-    setActiveIndex((prev: number) => Math.max(0, prev - STEP));
-    const carouselElemWidth = carouselContainer.current.firstElementChild!.getBoundingClientRect().width;
-    const containerGap = parseFloat(window.getComputedStyle(carouselContainer.current).gap);
-
-    // SCROLL THE ELEMENT BY THE ELEMENT WIDTH + GAP
-    carouselContainer.current.scrollLeft = carouselContainer.current.scrollLeft - (carouselElemWidth + containerGap);
+    carouselContainer.current.children[activeIndex - STEP].firstElementChild?.scrollIntoView({ behavior: "smooth" })
   }
 
   const handleCLickNext = () => {
     if (!carouselContainer.current) return;
-
-    setActiveIndex((prev: number) => Math.min(CLIENTS.length - 1, prev + STEP));
-    const carouselElemWidth = carouselContainer.current.firstElementChild!.getBoundingClientRect().width;
-    const containerGap = parseFloat(window.getComputedStyle(carouselContainer.current).gap);
-
-    // SCROLL THE ELEMENT BY THE ELEMENT WIDTH + GAP
-    carouselContainer.current.scrollLeft = (activeIndex + STEP) * (carouselElemWidth + containerGap);
+    carouselContainer.current.children[activeIndex + STEP].firstElementChild?.scrollIntoView({ behavior: "smooth" })
   }
 
-  function handleCarouselNav(event: UIEvent<HTMLDivElement>): void {
-    // TODO: HANDLE SWIP SCROLL
-  }
+
 
   return (
     <section className="p-4 space-y-6">
@@ -74,8 +74,8 @@ export const Testimonials = () => {
         <p className="text-center font-medium">{SUBTITLE}</p>
       </div>
 
-      <div className="bg-secondary">
-        <div ref={carouselContainer} className="w-full h-max flex p-8 rounded-[45px] cards-swipe overflow-x-scroll gap-10" onScroll={handleCarouselNav}>
+      <div className="bg-secondary p-8 space-y-6">
+        <div ref={carouselContainer} className="w-full flex items-center rounded-[45px] cards-swipe overflow-x-scroll gap-10">
           {clientCards}
         </div>
 
