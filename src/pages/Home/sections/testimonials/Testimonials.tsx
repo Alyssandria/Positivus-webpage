@@ -8,32 +8,36 @@ export const Testimonials = () => {
   const SUBTITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.SUB_TITLE;
 
   const CLIENTS = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.CLIENTS;
-  const clientCardRefs = useRef<(HTMLElement | null)[]>([])
+  const clientCardRefs = useRef<(HTMLElement | null)[]>([]) // TO GET THE HTMLElement
+  const clientCardsRefMap = useRef<Map<HTMLElement | null, number>>(new Map()) // TO STORE THE HTML ELEMENT FOR LOOKUPS
   const clientCards = CLIENTS.map((data, i) => {
     return (
-      <ClientTestimony key={data.NAME} data={data} ref={(el) => { clientCardRefs.current[i] = el }} />
+      <ClientTestimony key={data.NAME} data={data}
+        ref={
+          (el) => {
+            clientCardRefs.current[i] = el;
+            clientCardsRefMap.current.set(el, i);
+          }}
+      />
     )
   })
-
 
   // CAROUSEL LOGIC
   const STEP = 1 // AMOUNT TO DECREMENT OR INCREMENT BY
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const carouselContainer = useRef<HTMLDivElement | null>(null);
-
   const intersectionObserver = useRef<IntersectionObserver | null>(null);
 
+  console.log("-");
   useEffect(() => {
     if (!carouselContainer.current) return;
     intersectionObserver.current = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const visibleElement = entry.target.firstElementChild;
-          clientCardRefs.current.forEach((el, i) => {
-            if (el?.firstElementChild === visibleElement) {
-              setActiveIndex(i);
-            }
-          })
+          const index = clientCardsRefMap.current.get(entry.target as HTMLElement)
+          if (index !== undefined && activeIndex !== index) {
+            setActiveIndex(index)
+          }
         }
       },);
     }, { root: carouselContainer.current, threshold: .90 });
@@ -42,10 +46,6 @@ export const Testimonials = () => {
       if (el) intersectionObserver.current!.observe(el)
     });
   }, [activeIndex]);
-
-
-
-
 
   const carouselIcons = CLIENTS.map((_, i) => {
     return (
