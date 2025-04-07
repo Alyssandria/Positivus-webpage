@@ -3,6 +3,7 @@ import { ClientTestimony } from "./components/ClientTestimony"
 import { MoveLeft, MoveRight } from "lucide-react"
 import { CarouselIcon } from "@/components/icons/CarouselIcon"
 import { useRef, useState, useEffect } from "react"
+import { cn } from "@/lib/utils"
 export const Testimonials = () => {
   const TITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.TITLE;
   const SUBTITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.SUB_TITLE;
@@ -73,13 +74,17 @@ export const Testimonials = () => {
         <p className="text-center font-medium">{SUBTITLE}</p>
       </div>
 
-      <div className="bg-secondary p-8 space-y-6">
+      <svg>
+        <path d="M-5-14h107v161H-5z" />
+      </svg>
+
+      <div className="bg-secondary p-6 pb-8 space-y-6 rounded-[45px]">
         <div ref={carouselContainer} className="w-full flex items-center rounded-[45px] cards-swipe overflow-x-scroll gap-10">
           {clientCards}
         </div>
 
         <div className="flex justify-around items-center">
-          <button onClick={handleClickPrev} className={activeIndex === 0 ? "carousel-disabled" : ""} disabled={activeIndex === 0}>
+          <button onClick={handleClickPrev} className={cn(activeIndex === 0 ? "carousel-disabled" : "")} disabled={activeIndex === 0}>
             <MoveLeft className="stroke-white size-8" />
           </button>
           <div className="flex gap-2">

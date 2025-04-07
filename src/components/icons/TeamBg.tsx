@@ -25,10 +25,6 @@ export const TeamBg = ({ imgLink, ...props }: TeamBgProps) => {
       />
       <mask
         id={maskId}
-        width={98}
-        height={98}
-        x={0}
-        y={0}
         maskUnits="userSpaceOnUse"
         style={{
           maskType: "alpha",
@@ -39,11 +35,11 @@ export const TeamBg = ({ imgLink, ...props }: TeamBgProps) => {
           d="M83.807 48.912c32.842 37.41 2.514 67.737-34.895 34.895-37.41 32.842-67.738 2.514-34.895-34.895-32.843-37.41-2.515-67.738 34.895-34.895 37.41-32.843 67.737-2.515 34.895 34.895"
         />
       </mask>
-      <g mask={`url(#${maskId})`}>
-        <path fill={`url(#${patternId})`} d="M-5-14h107v161H-5z" />
+      <g mask={`url(#${maskId})`} >
+        <path fill={`url(#${patternId})`} d="M0 0h106v103H0z" />
         <path
           fill="#B9FF66"
-          d="M-5-14h107v161H-5z"
+          d="M0 0h106v103H0z"
           style={{
             mixBlendMode: "multiply",
           }}
@@ -64,7 +60,6 @@ export const TeamBg = ({ imgLink, ...props }: TeamBgProps) => {
         <image
           id={imageId}
           width={2662}
-          height={3993}
           href={imgLink}
           preserveAspectRatio="none"
         />
