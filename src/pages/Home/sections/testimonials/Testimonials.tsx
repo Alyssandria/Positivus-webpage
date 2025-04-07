@@ -28,7 +28,6 @@ export const Testimonials = () => {
   const carouselContainer = useRef<HTMLDivElement | null>(null);
   const intersectionObserver = useRef<IntersectionObserver | null>(null);
 
-  console.log("-");
   useEffect(() => {
     if (!carouselContainer.current) return;
     intersectionObserver.current = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {

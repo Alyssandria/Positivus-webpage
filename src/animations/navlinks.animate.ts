@@ -14,8 +14,10 @@ export const useNavLinksAnimation = (isActive: boolean) => {
 
     const primaryBg = gsap.getProperty(document.documentElement, ("--color-primary"));
     gsap.set(linksRef.current, { opacity: 0 });
+    gsap.set(linksRef.current, { left: "-999px" })
     gsap.set(logoRef.current, { color: "black" })
     timeline.current = gsap.timeline({ paused: true })
+      .set(linksRef.current, { left: 0 })
       .to(linksRef.current, { duration: .2, width: "100%", opacity: 1 })
       .to(logoRef.current, { duration: .1, color: primaryBg })
       .from(linksRef.current.children, { duration: 0.1, opacity: 0, y: 10, stagger: { amount: .2 } })
