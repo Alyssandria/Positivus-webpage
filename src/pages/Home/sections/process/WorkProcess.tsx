@@ -1,3 +1,4 @@
+import { Section } from "@/components/Section"
 import { Accordion } from "@/components/ui/Accordion"
 import CONTENT from "@/lib/content/en_us.json"
 export const WorkProcess = () => {
@@ -10,16 +11,10 @@ export const WorkProcess = () => {
   })
 
   return (
-    <section className="p-4 space-y-6">
-      <div className="space-y-6">
-        <h3 className="text-center">
-          <span className="section-heading">{TITLE}</span>
-        </h3>
-        <p className="text-center font-medium">{SUBTITLE}</p>
-      </div>
+    <Section subTitle={SUBTITLE} title={TITLE}>
       <div className="space-y-6">
         {accordion}
       </div>
-    </section>
+    </Section>
   )
 }

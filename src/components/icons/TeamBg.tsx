@@ -60,6 +60,7 @@ export const TeamBg = ({ imgLink, ...props }: TeamBgProps) => {
         <image
           id={imageId}
           width={2662}
+          height={3993}
           href={imgLink}
           preserveAspectRatio="none"
         />

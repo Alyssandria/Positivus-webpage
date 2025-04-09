@@ -1,6 +1,7 @@
 import CONTENT from "@/lib/content/en_us.json"
 import { TeamCard } from "./components/TeamCards"
 import { Link } from "@/components/ui/Link"
+import { Section } from "@/components/Section";
 
 export const Teams = () => {
   const TITLE = CONTENT.PUBLIC.MAIN.HOME.TEAM.TITLE;
@@ -11,19 +12,12 @@ export const Teams = () => {
   });
 
   return (
-    <section className="p-4 space-y-6">
-      <div className="space-y-6">
-        <h3 className="text-center">
-          <span className="section-heading">{TITLE}</span>
-        </h3>
-        <p className="text-center font-medium">{SUBTITLE}</p>
-      </div>
-
+    <Section title={TITLE} subTitle={SUBTITLE} >
       <div className="flex flex-col gap-6">
         {teamCards}
       </div>
 
       <Link to={TEAM_CTA.ACTION} linkStyle="button_bg" className="text-center font-normal text-base inline-block w-full bg-black">{TEAM_CTA.CONTENT}</Link>
-    </section>
+    </Section>
   )
 }

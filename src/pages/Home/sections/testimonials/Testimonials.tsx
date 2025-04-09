@@ -4,6 +4,8 @@ import { MoveLeft, MoveRight } from "lucide-react"
 import { CarouselIcon } from "@/components/icons/CarouselIcon"
 import { useRef, useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { Section } from "@/components/Section"
+
 export const Testimonials = () => {
   const TITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.TITLE;
   const SUBTITLE = CONTENT.PUBLIC.MAIN.HOME.TESTIMONIALS.SUB_TITLE;
@@ -66,18 +68,7 @@ export const Testimonials = () => {
 
 
   return (
-    <section className="p-4 space-y-6">
-      <div className="space-y-6">
-        <h3 className="text-center">
-          <span className="section-heading">{TITLE}</span>
-        </h3>
-        <p className="text-center font-medium">{SUBTITLE}</p>
-      </div>
-
-      <svg>
-        <path d="M-5-14h107v161H-5z" />
-      </svg>
-
+    <Section title={TITLE} subTitle={SUBTITLE}>
       <div className="bg-secondary p-6 pb-8 space-y-6 rounded-[45px]">
         <div ref={carouselContainer} className="w-full flex items-center rounded-[45px] cards-swipe overflow-x-scroll gap-10">
           {clientCards}
@@ -95,6 +86,6 @@ export const Testimonials = () => {
           </button>
         </div>
       </div>
-    </section>
+    </Section>
   )
 } 
