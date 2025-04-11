@@ -262,14 +262,14 @@
             }
           ]
         },
-        "TESTIMONIALS" : {
-          "TITLE" : "Testimonials",
-          "SUB_TITLE" : "Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services",
-          "CLIENTS" : [
+        "TESTIMONIALS": {
+          "TITLE": "Testimonials",
+          "SUB_TITLE": "Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services",
+          "CLIENTS": [
             {
-              "NAME" : "John Smith",
-              "POSITION" : "Marketing Director at XYZ Corp",
-              "MESSAGE" : "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence."
+              "NAME": "John Smith",
+              "POSITION": "Marketing Director at XYZ Corp",
+              "MESSAGE": "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence."
             },
             {
               "NAME": "Alice Johnson",
@@ -297,6 +297,49 @@
               "MESSAGE": "Positivus' team is not just a service provider; they are a true partner in our growth. Their digital strategies have delivered tangible results!"
             }
           ]
+        },
+        "CONTACT": {
+          "TITLE": "Contact Us",
+          "SUB_TITLE": "Connect with Us: Let's Discuss Your Digital Marketing Needs",
+          "FORM_CONTENT": {
+            "NAMEFIELD": {
+              "RADIO_BUTTONS": [
+                {
+                  "OPTION1": "Say Hi"
+                },
+                {
+                  "OPTION2": "Get a Quote"
+                }
+              ],
+              "INPUTS": [
+                {
+                  "LABEL": "Name",
+                  "LABELHIDDEN": false,
+                  "DEFAULT_VALUE": "",
+                  "PLACEHOLDER": "Name",
+                  "REQUIRED": false,
+                  "ID": "NameInput"
+                },
+                {
+                  "LABEL": "Email *",
+                  "LABELHIDDEN": false,
+                  "DEFAULT_VALUE": "",
+                  "PLACEHOLDER": "Email",
+                  "REQUIRED": true,
+                  "ID": "EmailInput"
+                }
+              ],
+              "TEXTAREA": {
+                "LABEL": "Message *",
+                "LABELHIDDEN": false,
+                "DEFAULT_VALUE": "",
+                "PLACEHOLDER": "Message",
+                "REQUIRED": true,
+                "ID": "Message"
+              }
+            },
+            "SUBMIT": "Send Message"
+          }
         }
       }
     }

@@ -31,7 +31,6 @@
     position: absolute;
     bottom: -20px;
     left: 40px;
-
     width: 0;
     height: 0;
     border-left: 23px solid transparent;
@@ -84,4 +83,9 @@
   scroll-behavior: smooth;
   font-family: "Space Grotesk", sans-serif;
   list-style-type: none;
+}
+
+textarea {
+  scrollbar-width: 2px;
+  resize: none;
 }

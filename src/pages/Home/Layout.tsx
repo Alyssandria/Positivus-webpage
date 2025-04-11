@@ -1,3 +1,4 @@
+import { Contact } from "./sections/contact/Contact"
 import { Hero } from "./sections/Hero"
 import { WorkProcess } from "./sections/process/WorkProcess"
 import { Services } from "./sections/services/Services"
@@ -14,6 +15,7 @@ export const Layout = () => {
       <WorkProcess />
       <Teams />
       <Testimonials />
+      <Contact />
     </>
   )
 }
