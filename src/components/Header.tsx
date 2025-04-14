@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react"
 import { Hamburger } from "./ui/Hamburger"
 import { useNavLinksAnimation } from "../animations/navlinks.animate"
 import { useHideOnScrollDown } from "../animations/header.animate"
-import { cn } from "@/lib/utils"
 
 type NavLinksJSON = {
   CONTENT: string;
@@ -53,7 +52,7 @@ export const Header = () => {
             <LogoIcon ref={logoRef} />
           </Link>
 
-          <div ref={linksRef} className={cn("fixed flex flex-col p-4 justify-center gap-4 h-full bg-secondary w-1 bottom-0 left-[-999px]")}>
+          <div ref={linksRef} className="fixed flex flex-col p-4 justify-center gap-4 h-full bg-secondary w-1 bottom-0 left-0">
             {links}
           </div>
           <Hamburger setIsActive={setIsMenuActive} isActive={isMenuActive} />

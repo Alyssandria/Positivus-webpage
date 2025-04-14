@@ -305,10 +305,16 @@
             "NAMEFIELD": {
               "RADIO_BUTTONS": [
                 {
-                  "OPTION1": "Say Hi"
+                  "NAME": "radio-options",
+                  "VALUE": "sendMessage",
+                  "ID": "sayHi",
+                  "LABEL": "Say Hi"
                 },
                 {
-                  "OPTION2": "Get a Quote"
+                  "LABEL": "Get a Quote",
+                  "NAME": "radio-options",
+                  "VALUE": "getQuote",
+                  "ID": "getQuote"
                 }
               ],
               "INPUTS": [

@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Layout } from "@/pages/Home/Layout";
 import { About } from "@/pages/About";
 import { Services } from "@/pages/Services";
+import { Footer } from "./components/Footer";
 const App = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="services" element={<Services />} />
         </Routes>
       </main>
+      <Footer />
     </>
   )
 }

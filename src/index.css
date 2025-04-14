@@ -12,6 +12,27 @@
 }
 
 @layer components {
+  .custom-radio {
+    appearance: none;
+    border: 1px solid black;
+    background-color: red;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+  }
+
+  .custom-radio:checked::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    width: 65%;
+    height: 65%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-primary);
+  }
+
   .section-heading {
     background-color: var(--color-primary);
     padding: 4px;
@@ -64,6 +85,8 @@
   blockquote p::after {
     content: "\201D";
   }
+
+
 
 }
 
