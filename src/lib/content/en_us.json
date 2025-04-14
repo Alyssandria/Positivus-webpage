@@ -1,36 +1,34 @@
 {
   "locale": "en_us",
   "PUBLIC": {
-    "HEADER": {
-      "NAV": {
-        "LOGO": {
-          "PATH": "/",
-          "CONTENT": ""
-        },
-        "ABOUT": {
-          "CONTENT": "About us",
-          "PATH": "/about"
-        },
-        "SERVICES": {
-          "CONTENT": "Services",
-          "PATH": "/services"
-        },
-        "USECASE": {
-          "CONTENT": "Use Cases",
-          "PATH": "/usecase"
-        },
-        "PRICING": {
-          "CONTENT": "Pricing",
-          "PATH": "/pricing"
-        },
-        "BLOG": {
-          "CONTENT": "Blog",
-          "PATH": "/blog"
-        },
-        "REQUEST": {
-          "CONTENT": "Request a quote",
-          "PATH": "/"
-        }
+    "NAVIGATION": {
+      "LOGO": {
+        "PATH": "/",
+        "CONTENT": ""
+      },
+      "ABOUT": {
+        "CONTENT": "About us",
+        "PATH": "/about"
+      },
+      "SERVICES": {
+        "CONTENT": "Services",
+        "PATH": "/services"
+      },
+      "USECASE": {
+        "CONTENT": "Use Cases",
+        "PATH": "/usecase"
+      },
+      "PRICING": {
+        "CONTENT": "Pricing",
+        "PATH": "/pricing"
+      },
+      "BLOG": {
+        "CONTENT": "Blog",
+        "PATH": "/blog"
+      },
+      "REQUEST": {
+        "CONTENT": "Request a quote",
+        "PATH": "/"
       }
     },
     "MAIN": {
@@ -346,6 +344,49 @@
             },
             "SUBMIT": "Send Message"
           }
+        }
+      }
+    },
+    "FOOTER": {
+      "CONTACTS_SECTION": {
+        "EMAIL": "info@positivus.com",
+        "PHONE": "555-567-8901",
+        "ADDRESS": {
+          "STREET": "1234 Main St",
+          "CITY": "Moonstone City, Stardust State 12345"
+        },
+        "FORM_CONTENT": {
+          "NEWSLETTER": {
+            "INPUTFIELDS": {
+              "ID": "newsletterEmail",
+              "PLACEHOLDER": "Email"
+            },
+            "SUBMIT": "Subscribe to news"
+          }
+        },
+        "SOCIALS": [
+          {
+            "ICON_PATH": "/linkedInIcon",
+            "NAME": "Linked In",
+            "PATH": "/linkedIn"
+          },
+          {
+            "ICON_PATH": "/facebookIcon",
+            "NAME": "Facebook",
+            "PATH": "/facebook"
+          },
+          {
+            "ICON_PATH": "/twitterIcon",
+            "NAME": "Twitter",
+            "PATH": "/twitter"
+          }
+        ]
+      },
+      "COPYRIGHT_SECTION": {
+        "COPYRIGHT": "© 2023 Positivus. All Rights Reserved.",
+        "PRIVACY_POLICY": {
+          "CONTENT": "Privacy Policy",
+          "PATH": "/privacy"
         }
       }
     }
