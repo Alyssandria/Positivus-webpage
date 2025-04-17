@@ -1,36 +1,43 @@
 {
   "locale": "en_us",
   "PUBLIC": {
-    "NAVIGATION": {
-      "LOGO": {
+    "NAVIGATION": [
+      {
         "PATH": "/",
-        "CONTENT": ""
+        "CONTENT": "LOGO",
+        "ON_FOOTER": true
       },
-      "ABOUT": {
+      {
         "CONTENT": "About us",
-        "PATH": "/about"
+        "PATH": "/about",
+        "ON_FOOTER": true
       },
-      "SERVICES": {
+      {
         "CONTENT": "Services",
-        "PATH": "/services"
+        "PATH": "/services",
+        "ON_FOOTER": true
       },
-      "USECASE": {
+      {
         "CONTENT": "Use Cases",
-        "PATH": "/usecase"
+        "PATH": "/usecase",
+        "ON_FOOTER": true
       },
-      "PRICING": {
+      {
         "CONTENT": "Pricing",
-        "PATH": "/pricing"
+        "PATH": "/pricing",
+        "ON_FOOTER": true
       },
-      "BLOG": {
+      {
         "CONTENT": "Blog",
-        "PATH": "/blog"
+        "PATH": "/blog",
+        "ON_FOOTER": false
       },
-      "REQUEST": {
+      {
         "CONTENT": "Request a quote",
-        "PATH": "/"
+        "PATH": "/request",
+        "ON_FOOTER": false
       }
-    },
+    ],
     "MAIN": {
       "HOME": {
         "HERO": {
@@ -349,12 +356,21 @@
     },
     "FOOTER": {
       "CONTACTS_SECTION": {
-        "EMAIL": "info@positivus.com",
-        "PHONE": "555-567-8901",
-        "ADDRESS": {
-          "STREET": "1234 Main St",
-          "CITY": "Moonstone City, Stardust State 12345"
-        },
+        "TITLE": "Contact Us:",
+        "CONTACTS": [
+          {
+            "CONTENT": "info@positivus.com",
+            "LABEL": "EMAIL"
+          },
+          {
+            "LABEL": "phone",
+            "CONTENT": "555-567-8901"
+          },
+          {
+            "LABEL": "address",
+            "CONTENT": "1234 Main St \nMoonstone City, Stardust State 12345"
+          }
+        ],
         "FORM_CONTENT": {
           "NEWSLETTER": {
             "INPUTFIELDS": {

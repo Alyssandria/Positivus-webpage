@@ -20,6 +20,7 @@ export const Contact = () => {
       </label>
     )
   })
+
   const inputFields = FORM_CONTENT.NAMEFIELD.INPUTS.map((data) => {
     return (
       <div className="flex flex-col gap-2" key={data.LABEL}>
@@ -28,8 +29,6 @@ export const Contact = () => {
       </div>
     )
   });
-
-
 
   return (
     <Section title={TITLE} subTitle={SUBTITLE}>
