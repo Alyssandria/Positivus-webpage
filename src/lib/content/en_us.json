@@ -382,17 +382,17 @@
         },
         "SOCIALS": [
           {
-            "ICON_PATH": "/linkedInIcon",
+            "ICON_ID": 1,
             "NAME": "Linked In",
             "PATH": "/linkedIn"
           },
           {
-            "ICON_PATH": "/facebookIcon",
+            "ICON_ID": 2,
             "NAME": "Facebook",
             "PATH": "/facebook"
           },
           {
-            "ICON_PATH": "/twitterIcon",
+            "ICON_ID": 3,
             "NAME": "Twitter",
             "PATH": "/twitter"
           }

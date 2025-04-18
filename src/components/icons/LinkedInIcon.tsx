@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import * as React from "react";
-const SvgLinkedInIcon = ({ className, ...props }: React.HTMLAttributes<SVGSVGElement>) => (
+import { HTMLAttributes } from "react";
+export const LinkedInIcon = ({ className, ...props }: HTMLAttributes<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 30 30"
@@ -15,4 +15,3 @@ const SvgLinkedInIcon = ({ className, ...props }: React.HTMLAttributes<SVGSVGEle
     />
   </svg>
 );
-export default SvgLinkedInIcon;
