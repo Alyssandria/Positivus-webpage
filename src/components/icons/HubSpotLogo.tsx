@@ -1,4 +1,3 @@
-import type { SVGProps } from "react";
 import { BrandIcon } from "./BrandIcon";
 export const HubSpotLogo = () => (
   <BrandIcon
