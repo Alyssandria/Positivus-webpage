@@ -65,6 +65,7 @@
           },
           "CARDS": [
             {
+              "ICON_ID": 1,
               "LABEL": [
                 "Search engine",
                 "optimization"
@@ -75,6 +76,7 @@
               }
             },
             {
+              "ICON_ID": 2,
               "LABEL": [
                 "Pay-per-click",
                 "advertising"
@@ -85,6 +87,7 @@
               }
             },
             {
+              "ICON_ID": 3,
               "LABEL": [
                 "Social Media",
                 "Marketing"
@@ -95,6 +98,7 @@
               }
             },
             {
+              "ICON_ID": 4,
               "LABEL": [
                 "Email",
                 "Marketing"
@@ -105,6 +109,7 @@
               }
             },
             {
+              "ICON_ID": 5,
               "LABEL": [
                 "Content",
                 "Creation"
@@ -115,6 +120,7 @@
               }
             },
             {
+              "ICON_ID": 6,
               "LABEL": [
                 "Analytics and",
                 "Tracking"
