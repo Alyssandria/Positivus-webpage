@@ -63,86 +63,68 @@
             "CONTENT": "At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:",
             "PATH": ""
           },
-          "CARDS": {
-            "SEO": {
-              "TITLE": {
-                "LABEL": [
-                  "Search engine",
-                  "optimization"
-                ],
-                "PATH": ""
-              },
+          "CARDS": [
+            {
+              "LABEL": [
+                "Search engine",
+                "optimization"
+              ],
               "CTA": {
                 "CONTENT": "Learn More",
                 "ACTION": "/learn-seo"
               }
             },
-            "PPC_ADVERT": {
-              "TITLE": {
-                "LABEL": [
-                  "Pay-per-click",
-                  "advertising"
-                ],
-                "PATH": ""
-              },
+            {
+              "LABEL": [
+                "Pay-per-click",
+                "advertising"
+              ],
               "CTA": {
                 "CONTENT": "Learn More",
                 "ACTION": "/learn-ppc_advert"
               }
             },
-            "SOCMED": {
-              "TITLE": {
-                "LABEL": [
-                  "Social Media",
-                  "Marketing"
-                ],
-                "PATH": ""
-              },
+            {
+              "LABEL": [
+                "Social Media",
+                "Marketing"
+              ],
               "CTA": {
                 "CONTENT": "Learn More",
                 "ACTION": "/learn-socmed"
               }
             },
-            "EMAIL": {
-              "TITLE": {
-                "LABEL": [
-                  "Email",
-                  "Marketing"
-                ],
-                "PATH": ""
-              },
+            {
+              "LABEL": [
+                "Email",
+                "Marketing"
+              ],
               "CTA": {
                 "CONTENT": "Learn More",
                 "ACTION": "/learn-email"
               }
             },
-            "CONTENT_CREATE": {
-              "TITLE": {
-                "LABEL": [
-                  "Content",
-                  "Creation"
-                ],
-                "PATH": ""
-              },
+            {
+              "LABEL": [
+                "Content",
+                "Creation"
+              ],
               "CTA": {
                 "CONTENT": "Learn More",
                 "ACTION": "/learn-content_create"
               }
             },
-            "ANALYTICS": {
-              "TITLE": {
-                "LABEL": [
-                  "Analytics and",
-                  "Tracking"
-                ],
-                "PATH": ""
-              },
+            {
+              "LABEL": [
+                "Analytics and",
+                "Tracking"
+              ],
               "CTA": {
                 "CONTENT": "Learn More",
                 "ACTION": "/learn-analytics"
               }
             }
-          },
+          ],
           "PROPOSAL": {
             "TITLE": {
               "CONTENT": "Let’s make things happen",
