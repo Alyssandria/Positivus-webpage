@@ -3,56 +3,62 @@ import CONTENT from "@/lib/content/en_us.json"
 import { Link } from "./ui/Link";
 import { Input } from "./ui/Input";
 import { CONSTANTS } from "@/lib/constants";
+import { useMemo } from "react";
 
 export const Footer = () => {
   const FOOTER_CONTENT = CONTENT.PUBLIC.FOOTER
-  const NAVLINKS = CONTENT.PUBLIC.NAVIGATION.filter(el => el.ON_FOOTER).map(el => {
-    let link: React.ReactNode;
+  const NAVLINKS = useMemo(() => {
+    return CONTENT.PUBLIC.NAVIGATION.filter(el => el.ON_FOOTER).map(el => {
+      let link: React.ReactNode;
 
-    if (el.CONTENT === "LOGO") {
-      link = <LogoIcon className="h-7" />
-    } else {
-      link = el.CONTENT
-    }
-    return (
-      <li key={el.CONTENT}>
-        <Link to={el.PATH} className="w-full font-normal text-white inline-flex justify-center text-xs" >
-          {link}
-        </Link>
-      </li>
+      if (el.CONTENT === "LOGO") {
+        link = <LogoIcon className="h-7" />
+      } else {
+        link = el.CONTENT
+      }
+      return (
+        <li key={el.CONTENT}>
+          <Link to={el.PATH} className="w-full font-normal text-white inline-flex justify-center text-xs" >
+            {link}
+          </Link>
+        </li>
 
-    )
-  });
+      )
+    });
 
 
-  const CONTACTS = FOOTER_CONTENT.CONTACTS_SECTION.CONTACTS.map(el => {
-    const label = el.LABEL.toLowerCase();
-    let content: React.ReactNode;
+  }, [CONTENT.PUBLIC.NAVIGATION])
 
-    if (label === "address") {
-      content =
-        <span>
-          {el.CONTENT.split("\n")[0]}
-          <br />
-          {el.CONTENT.split("\n")[1]}
-        </span>
-    } else {
-      content = el.CONTENT;
-    }
+  const CONTACTS = useMemo(() => {
+    return FOOTER_CONTENT.CONTACTS_SECTION.CONTACTS.map(el => {
+      const label = el.LABEL.toLowerCase();
+      let content: React.ReactNode;
 
-    return (
-      <li key={el.LABEL}>
-        <span className="text-xs">
-          {`${label.charAt(0).toUpperCase() + label.slice(1)}: `}
-          {content}
-        </span>
-      </li>
-    )
-  });
+      if (label === "address") {
+        content =
+          <span>
+            {el.CONTENT.split("\n")[0]}
+            <br />
+            {el.CONTENT.split("\n")[1]}
+          </span>
+      } else {
+        content = el.CONTENT;
+      }
+
+      return (
+        <li key={el.LABEL}>
+          <span className="text-xs">
+            {`${label.charAt(0).toUpperCase() + label.slice(1)}: `}
+            {content}
+          </span>
+        </li>
+      )
+    });
+  }, [FOOTER_CONTENT.CONTACTS_SECTION.CONTACTS])
 
 
   const SOCIALS = FOOTER_CONTENT.CONTACTS_SECTION.SOCIALS.map((el) => {
-    const ICON = CONSTANTS.ICONS.find(icon => icon.ID === el.ICON_ID)?.ICON;
+    const ICON = CONSTANTS.ICONS.SOCIALS.find(icon => icon.ID === el.ICON_ID)?.ICON;
     return (
       <li key={el.ICON_ID}>
         {ICON ? <ICON className="w-6" /> : ""}
@@ -86,14 +92,9 @@ export const Footer = () => {
         </ul>
       </section>
 
-
-
-      {/* TODO: FINISH FOOTER */}
-
-
       <section className="border-t border-t-white pt-4 text-center text-white font-light space-y-2">
-        <small className="inline-block">{FOOTER_CONTENT.COPYRIGHT_SECTION.COPYRIGHT}</small>
-        <a href={FOOTER_CONTENT.COPYRIGHT_SECTION.PRIVACY_POLICY.PATH} className="inline-block text-sm underline">
+        <small className="block">{FOOTER_CONTENT.COPYRIGHT_SECTION.COPYRIGHT}</small>
+        <a href={FOOTER_CONTENT.COPYRIGHT_SECTION.PRIVACY_POLICY.PATH} className="block text-sm underline">
           {FOOTER_CONTENT.COPYRIGHT_SECTION.PRIVACY_POLICY.CONTENT}
         </a>
       </section>
