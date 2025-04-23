@@ -1,114 +1,88 @@
 import { ServiceCard } from "./components/ServicesCards"
 import CONTENT from "@/lib/content/en_us.json"
 import { ServiceSeoIcon } from "@/components/icons/ServiceSeoIcon"
-import { ServicePpcIcon } from "@/components/icons/ServicePpcIcon"
-import { ServiceSocmedIcon } from "@/components/icons/ServiceSocmedIcon"
-import { ServiceEmailIcon } from "@/components/icons/ServiceEmailIcon"
-import { ServiceContentIcon } from "@/components/icons/ServiceContentIcon"
-import { ServiceAnalyticsIcon } from "@/components/icons/ServiceAnalyticsIcon"
 import { Proposal } from "./components/Proposal"
 import { Section } from "@/components/Section"
+import { useMemo } from "react"
+import { bgVariants } from "./components/utils/sectionUtils"
+import { CONSTANTS } from "@/lib/constants"
+
+// LOCAL CONSTANTS
+const LOCAL_CONSTANTS = {
+  SERVICE_TITLE: CONTENT.PUBLIC.MAIN.HOME.SERVICES.TITLE.CONTENT,
+  SERVICE_SUBTITLE: CONTENT.PUBLIC.MAIN.HOME.SERVICES.SUB_TITLE.CONTENT,
+  SERVICE_CARDS: CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS
+}
+
+const bgClassVariants = {
+  white: "bg-tertiary",
+  green: "bg-primary",
+  black: "bg-secondary",
+}
+
+const fillClassVariants = {
+  white: "fill-tertiary",
+  green: "fill-primary",
+  black: "fill-secondary",
+}
+
+// LOCAL UTILITIES 
+const getCustomStyles = (i: number) => {
+
+  // RESET THE INDEX EVERY 3rd COUNT
+  const index = i % 3;
+  const bgVariantArr: bgVariants[] = ["white", "green", "black"]
+
+  return {
+    background: bgClassVariants[bgVariantArr[index]],
+    roundedLabelsBg: bgClassVariants[index === 0 ? bgVariantArr[1] : bgVariantArr[0]],
+    linkBg: {
+      arrow: fillClassVariants[index === bgVariantArr.length - 1 ? bgVariantArr[2] : bgVariantArr[1]],
+      circle: fillClassVariants[index === bgVariantArr.length - 1 ? bgVariantArr[0] : bgVariantArr[2]]
+    }
+  }
+
+}
+
+
 export const Services = () => {
-  const sectionTitle = CONTENT.PUBLIC.MAIN.HOME.SERVICES.TITLE.CONTENT
-  const sectionSubTitle = CONTENT.PUBLIC.MAIN.HOME.SERVICES.SUB_TITLE.CONTENT
 
   // CARD CONTENTS
+  const ServiceCards = useMemo(() => {
+    return LOCAL_CONSTANTS.SERVICE_CARDS.map((el, i) => {
+      const styles = getCustomStyles(i);
+      const icon = CONSTANTS.ICONS.SERVICES.find(icon => el.ICON_ID === icon.ID)
 
-  // SEO
-  const seoLink = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.SEO.CTA.ACTION
-  const seoLabels = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.SEO.TITLE.LABEL
+      if (!icon) return;
 
-  // PPC ADVERT
-  const ppcLink = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.PPC_ADVERT.CTA.ACTION
-  const ppcLabels = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.PPC_ADVERT.TITLE.LABEL
+      return (
+        <ServiceCard
+          key={el.ICON_ID}
+          link={el.CTA.CONTENT}
+          labels={el.LABEL}
+          Icon={icon.ICON}
+          className={styles.background}
+          customStyles={
+            {
+              roundedLabels: {
+                bg: styles.roundedLabelsBg
+              },
+              linkIcon: {
+                arrowBg: styles.linkBg.arrow,
+                circleBg: styles.linkBg.circle
+              }
 
-  // SOCMED MARKETING
-  const socmedLink = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.SOCMED.CTA.ACTION
-  const socmedLabels = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.SOCMED.TITLE.LABEL
-
-  // EMAIL MARKETING
-  const emailLink = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.EMAIL.CTA.ACTION
-  const emailLabels = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.EMAIL.TITLE.LABEL
-
-  // CONTENT CREATION
-  const contentLink = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.CONTENT_CREATE.CTA.ACTION
-  const contentLabels = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.CONTENT_CREATE.TITLE.LABEL
-
-  // ANALYSIS AND TRACKING
-  const analysisLink = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.ANALYTICS.CTA.ACTION
-  const analysisLabels = CONTENT.PUBLIC.MAIN.HOME.SERVICES.CARDS.ANALYTICS.TITLE.LABEL
+            }
+          }
+        />
+      )
+    })
+  }, [LOCAL_CONSTANTS.SERVICE_CARDS])
 
   return (
-    <Section subTitle={sectionSubTitle} title={sectionTitle}>
-      <div className="cards space-y-4">
-        <ServiceCard
-          link={seoLink}
-          labels={seoLabels}
-          Icon={ServiceSeoIcon}
-          className="bg-tertiary"
-        />
-
-        <ServiceCard
-          link={ppcLink}
-          labels={ppcLabels}
-          Icon={ServicePpcIcon}
-          className="bg-primary"
-          customStyles={{
-            roundedLabels: {
-              bg: "bg-tertiary"
-            }
-          }}
-        />
-
-        <ServiceCard
-          link={socmedLink}
-          labels={socmedLabels}
-          Icon={ServiceSocmedIcon}
-          className="bg-secondary"
-          customStyles={{
-            linkIcon: {
-              circleBg: "fill-tertiary",
-              arrowBg: "fill-secondary"
-            },
-            roundedLabels: {
-              bg: "bg-tertiary"
-            }
-          }}
-        />
-        <ServiceCard
-          link={emailLink}
-          labels={emailLabels}
-          Icon={ServiceEmailIcon}
-          className="bg-tertiary"
-        />
-
-        <ServiceCard
-          link={contentLink}
-          labels={contentLabels}
-          Icon={ServiceContentIcon}
-          className="bg-primary"
-          customStyles={{
-            roundedLabels: {
-              bg: "bg-tertiary"
-            }
-          }}
-        />
-
-        <ServiceCard
-          link={analysisLink}
-          labels={analysisLabels}
-          Icon={ServiceAnalyticsIcon}
-          className="bg-secondary"
-          customStyles={{
-            linkIcon: {
-              circleBg: "fill-tertiary",
-              arrowBg: "fill-secondary"
-            },
-            roundedLabels: {
-              bg: "bg-tertiary"
-            }
-          }}
-        />
+    <Section subTitle={LOCAL_CONSTANTS.SERVICE_SUBTITLE} title={LOCAL_CONSTANTS.SERVICE_TITLE}>
+      <div className="cards flex flex-wrap justify-center space-y-4">
+        {ServiceCards}
       </div>
 
       <div>
