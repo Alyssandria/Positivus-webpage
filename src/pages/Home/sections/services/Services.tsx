@@ -1,6 +1,5 @@
 import { ServiceCard } from "./components/ServicesCards"
 import CONTENT from "@/lib/content/en_us.json"
-import { ServiceSeoIcon } from "@/components/icons/ServiceSeoIcon"
 import { Proposal } from "./components/Proposal"
 import { Section } from "@/components/Section"
 import { useMemo } from "react"
