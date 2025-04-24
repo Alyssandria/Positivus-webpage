@@ -70,7 +70,6 @@ export const Services = () => {
                 arrowBg: styles.linkBg.arrow,
                 circleBg: styles.linkBg.circle
               }
-
             }
           }
         />
@@ -80,7 +79,7 @@ export const Services = () => {
 
   return (
     <Section subTitle={LOCAL_CONSTANTS.SERVICE_SUBTITLE} title={LOCAL_CONSTANTS.SERVICE_TITLE}>
-      <div className="cards flex flex-wrap justify-center space-y-4">
+      <div className="flex flex-wrap gap-8 sm:grid sm:grid-cols-2 sm:place-items-center">
         {ServiceCards}
       </div>
 

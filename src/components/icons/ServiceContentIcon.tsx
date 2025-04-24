@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 export const ServiceContentIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    viewBox="0 0 280 262"
+    viewBox="0 0 215 215"
     xmlns="http://www.w3.org/2000/svg"
     fill="#000"
     {...props}

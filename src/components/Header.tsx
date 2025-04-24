@@ -49,7 +49,7 @@ export const Header = () => {
   })
 
   return (
-    <header ref={headerRef} className="h-[10svh] sticky p-4 z-10 top-0 bg-white">
+    <header ref={headerRef} className="site h-[10svh] sticky p-4 z-10 top-0 bg-white sm:p-8">
       <nav className="w-full h-full flex justify-between items-center">
         <ul className="flex justify-between items-center w-full h-full">
           <Link to={LOGO ? LOGO.PATH : "/"} className="z-10 w-32 text-black inline-flex flex-row items-center justify-center" onClick={() => setIsMenuActive(false)}>

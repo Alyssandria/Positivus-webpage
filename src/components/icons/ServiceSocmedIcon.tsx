@@ -2,7 +2,7 @@ import type { SVGProps } from "react";
 export const ServiceSocmedIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 280 280"
+    viewBox="0 0 215 215"
     fill="#fff"
     {...props}
   >

@@ -11,24 +11,26 @@ interface ServiceCardProps extends ComponentPropsWithRef<"div"> {
   customStyles: serviceCardCustomStyles,
   Icon: ComponentType<SVGProps<SVGSVGElement>>
 }
+
 export const ServiceCard = ({ labels: title, ref, link, Icon, className, customStyles, ...props }: ServiceCardProps) => {
   const [labelUpper, labelLower] = title
 
   return (
-    <Link to={link} className="inline-block w-full">
-      <div className={cn("p-8 rounded-[45px] space-y-6 border-black border-1 service-card-shadow", className)} {...props} ref={ref}>
+    <div className={cn("p-8 w-full max-w-[95%] rounded-[45px] space-y-6 basis-full border-black border-1 service-card-shadow", className)} {...props} ref={ref}>
+      <Link to={link} className="grid w-full grid-cols-2">
         <CardLabel labelLower={labelLower} labelUpper={labelUpper} bg={customStyles.roundedLabels.bg} />
-        <div className="w-full flex">
-          <div className="w-full relative flex">
-            <LinkArrowIcon className="size-8 absolute bottom-0 left-0" arrowBG={customStyles?.linkIcon?.arrowBg} circleBG={customStyles?.linkIcon?.circleBg} />
-            <span className="sr-only absolute bottom-0 left-10 h-fit text-black font-normal text-lg min-[450px]:not-sr-only min-[450px]:absolute">Learn More</span>
-          </div>
-          <div className="w-full">
-            <Icon className="w-30 m-auto" />
-          </div>
-        </div>
-      </div>
 
-    </Link>
+        <div className="w-full relative flex">
+          <LinkArrowIcon className="size-8 absolute bottom-0 left-0" arrowBG={customStyles?.linkIcon?.arrowBg} circleBG={customStyles?.linkIcon?.circleBg} />
+          <span className="sr-only absolute bottom-0 left-10 h-fit text-black font-normal text-lg">Learn More</span>
+        </div>
+
+        <div className="w-full place-self-center xl:col-start-2 xl:row-start-1">
+          <Icon className="w-24 m-auto md:w-30 xl:w-50" />
+        </div>
+
+      </Link>
+    </div>
+
   )
 }

@@ -13,7 +13,7 @@ export const Hero = () => {
   const { brandsRowUpper, brandsRowLower } = useBrandsAnimation();
   return (
     <section className="w-full">
-      <div className="p-4 space-y-6">
+      <div className="p-4 space-y-6 sm:p-8">
         <h1 className="text-4xl font-medium">{CONTENT.PUBLIC.MAIN.HOME.HERO.TITLE.CONTENT}</h1>
         <HeroIllustration className="w-full" />
         <p className="text-sm">{CONTENT.PUBLIC.MAIN.HOME.HERO.SUB_TITLE.CONTENT}</p>

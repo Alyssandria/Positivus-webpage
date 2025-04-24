@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <main className="space-y-6">
+      <main className="site space-y-6">
         <Routes>
           <Route index element={<Layout />} />
           <Route path="about" element={<About />} />

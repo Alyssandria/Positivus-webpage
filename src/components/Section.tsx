@@ -8,7 +8,7 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
 }
 export const Section = ({ title, subTitle, children, className, ...props }: SectionProps) => {
   return (
-    <section className={cn("p-4 space-y-6", className)} {...props}>
+    <section className={cn("p-4 space-y-6 sm:p-8", className)} {...props}>
       <div className="space-y-6">
         <h3 className="text-center">
           <span className="section-heading">{title}</span>

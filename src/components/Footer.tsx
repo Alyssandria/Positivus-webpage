@@ -68,7 +68,7 @@ export const Footer = () => {
 
 
   return (
-    <footer className={"mt-8 flex flex-col bg-secondary p-4 gap-6"}>
+    <footer className={"mt-8 flex flex-col bg-secondary p-4 gap-6 sm:p-8"}>
       <nav>
         <ul className="mt-6 flex flex-col gap-2">
           {NAVLINKS}
