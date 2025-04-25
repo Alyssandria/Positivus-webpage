@@ -35,6 +35,7 @@ const getCustomStyles = (i: number) => {
   return {
     background: bgClassVariants[bgVariantArr[index]],
     roundedLabelsBg: bgClassVariants[index === 0 ? bgVariantArr[1] : bgVariantArr[0]],
+    linkTextStyles: index === 2 ? "text-white" : "text-black",
     linkBg: {
       arrow: fillClassVariants[index === bgVariantArr.length - 1 ? bgVariantArr[2] : bgVariantArr[1]],
       circle: fillClassVariants[index === bgVariantArr.length - 1 ? bgVariantArr[0] : bgVariantArr[2]]
@@ -66,6 +67,7 @@ export const Services = () => {
               roundedLabels: {
                 bg: styles.roundedLabelsBg
               },
+              linkTextColor: styles.linkTextStyles,
               linkIcon: {
                 arrowBg: styles.linkBg.arrow,
                 circleBg: styles.linkBg.circle

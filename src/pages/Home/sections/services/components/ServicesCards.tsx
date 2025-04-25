@@ -16,17 +16,17 @@ export const ServiceCard = ({ labels: title, ref, link, Icon, className, customS
   const [labelUpper, labelLower] = title
 
   return (
-    <div className={cn("p-8 w-full max-w-[95%] rounded-[45px] space-y-6 basis-full border-black border-1 service-card-shadow", className)} {...props} ref={ref}>
-      <Link to={link} className="grid w-full grid-cols-2">
+    <div className={cn("p-8 w-full h-full max-w-[95%] rounded-[45px] space-y-6 basis-full border-black border-1 service-card-shadow md:h-[310px]", className)} {...props} ref={ref}>
+      <Link to={link} className="grid w-full h-full grid-cols-2 gap-6">
         <CardLabel labelLower={labelLower} labelUpper={labelUpper} bg={customStyles.roundedLabels.bg} />
 
-        <div className="w-full relative flex">
-          <LinkArrowIcon className="size-8 absolute bottom-0 left-0" arrowBG={customStyles?.linkIcon?.arrowBg} circleBG={customStyles?.linkIcon?.circleBg} />
-          <span className="sr-only absolute bottom-0 left-10 h-fit text-black font-normal text-lg">Learn More</span>
+        <div className="w-full relative flex items-end gap-4">
+          <LinkArrowIcon className="shrink-0 size-8 md:size-10" arrowBG={customStyles.linkIcon.arrowBg} circleBG={customStyles.linkIcon.circleBg} />
+          <span className={cn("sr-only inline-block font-normal text-lg md:not-sr-only md:text-xl xl:text-2xl md:whitespace-nowrap", customStyles.linkTextColor)}>Learn More</span>
         </div>
 
-        <div className="w-full place-self-center xl:col-start-2 xl:row-start-1">
-          <Icon className="w-24 m-auto md:w-30 xl:w-50" />
+        <div className="w-full place-self-center md:col-start-2 md:row-start-1 md:row-span-2">
+          <Icon className="w-24 m-auto md:30 lg:w-40 2xl:w-48" />
         </div>
 
       </Link>
