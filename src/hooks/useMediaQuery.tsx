@@ -5,7 +5,7 @@ interface useMediaQueryParams {
   minWidth?: number
 }
 
-export const useMediaQuery = (options?: useMediaQueryParams) => {
+export const useMediaQuery = ({ maxWidth, minWidth }: useMediaQueryParams) => {
   const [mediaSize, setMediaSize] = useState<number>(window.innerWidth);
 
 
@@ -17,10 +17,9 @@ export const useMediaQuery = (options?: useMediaQueryParams) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const returnObj = {}
-  if (!options) return { width: mediaSize }
 
-  if (options.maxWidth) return { width: mediaSize, matches: options.maxWidth > mediaSize || false }
-  if (options.minWidth) return { ...returnObj, matches: options.minWidth < mediaSize || false }
+
+  if (maxWidth) return maxWidth > mediaSize || false
+  if (minWidth) return minWidth < mediaSize || false
 
 }
