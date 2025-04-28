@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react"
 import { Hamburger } from "./ui/Hamburger"
 import { useNavLinksAnimation } from "../animations/navlinks.animate"
 import { useHideOnScrollDown } from "../animations/header.animate"
+import { useMediaQuery } from "@/hooks/useMediaQuery"
 
 type NavLinksJSON = {
   CONTENT: string;
@@ -15,10 +16,13 @@ export const Header = () => {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
   const headerRef = useHideOnScrollDown();
   const { linksRef, logoRef } = useNavLinksAnimation(isMenuActive)
-
   const LOGO = useMemo(() => {
     return content.PUBLIC.NAVIGATION.find(el => el.CONTENT === "LOGO");
   }, []);
+
+  // TODO: REFACTOR MOBILE HAMBUER, MAKE ALL MOBILE NAV IN HAMBURGER
+
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
 
   // DISABLE SCROLLING IF MENU IS ACTIVE
   useEffect(() => {
@@ -56,10 +60,19 @@ export const Header = () => {
             <LogoIcon ref={logoRef} />
           </Link>
 
-          <div ref={linksRef} className="fixed flex flex-col p-4 justify-center gap-4 h-full bg-secondary w-1 bottom-0 left-0">
-            {links}
-          </div>
-          <Hamburger setIsActive={setIsMenuActive} isActive={isMenuActive} />
+
+          {isMobile!.matches &&
+            (
+              <>
+                <div ref={linksRef} className="fixed flex flex-col p-4 opacity-0 justify-center gap-4 h-full bg-secondary w-1 bottom-0 left-0">
+                  {links}
+                </div>
+                <Hamburger setIsActive={setIsMenuActive} isActive={isMenuActive} />
+              </>
+            )
+          }
+
+
         </ul>
       </nav>
     </header>
