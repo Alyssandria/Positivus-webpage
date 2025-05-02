@@ -14,7 +14,7 @@ const linkVariants = cva("cursor-pointer font-bold text-xl w-max rounded-md p-1"
     linkStyle: {
       button_bg: "rounded-lg px-8 py-4 text-white bg-secondary",
       default: "text-white",
-      button: "border rounded-lg px-8 py-4"
+      button: "border rounded-lg px-6 py-2"
     }
   },
   defaultVariants: {
@@ -24,6 +24,6 @@ const linkVariants = cva("cursor-pointer font-bold text-xl w-max rounded-md p-1"
 
 export const Link = ({ className, to, children, linkStyle, ...props }: Navlinkprops) => {
   return (
-    <NavLink to={to} className={({ isActive }) => isActive && to !== "/" ? cn(linkVariants({ linkStyle }), "bg-primary text-secondary", className) : cn(linkVariants({ linkStyle }), className)} {...props}>{children}</NavLink>
+    <NavLink to={to} className={({ isActive }) => isActive && to !== "/" ? cn(linkVariants({ linkStyle }), className, "bg-primary text-secondary") : cn(linkVariants({ linkStyle }), className)} {...props}>{children}</NavLink>
   )
 }

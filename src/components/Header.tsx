@@ -1,78 +1,52 @@
 import { LogoIcon } from "./icons/Logo"
 import { Link } from "./ui/Link"
 import content from "../lib/content/en_us.json"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useRef, } from "react"
 import { Hamburger } from "./ui/Hamburger"
-import { useNavLinksAnimation } from "../animations/navlinks.animate"
 import { useHideOnScrollDown } from "../animations/header.animate"
 import { useMediaQuery } from "@/hooks/useMediaQuery"
-
-type NavLinksJSON = {
-  CONTENT: string;
-  PATH: string;
-}
+import CONTENT from "@/lib/content/en_us.json"
+import { cn } from "@/lib/utils"
 
 export const Header = () => {
-  const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
-  const headerRef = useHideOnScrollDown();
-  const { linksRef, logoRef } = useNavLinksAnimation(isMenuActive)
-  const LOGO = useMemo(() => {
-    return content.PUBLIC.NAVIGATION.find(el => el.CONTENT === "LOGO");
-  }, []);
-
-  // TODO: REFACTOR MOBILE HAMBUER, MAKE ALL MOBILE NAV IN HAMBURGER
-
   const isMobile = useMediaQuery({ maxWidth: 1024 });
-
-  // DISABLE SCROLLING IF MENU IS ACTIVE
-  useEffect(() => {
-    if (isMenuActive) {
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "auto";
-    }
-  }, [isMenuActive])
-
-  // MEMOIZE navlinksArr
-  const linksArr: NavLinksJSON[] = useMemo(() => {
-    return content.PUBLIC.NAVIGATION.filter(el => el.CONTENT !== "LOGO");
-  }, [])
-
-  const links = linksArr.map(el => {
+  const headerRef = useHideOnScrollDown();
+  const navigationRef = useRef<HTMLUListElement | null>(null);
+  const LOGO = CONTENT.PUBLIC.NAVIGATION.map((el) => {
     return (
-      el.CONTENT === "Request a quote"
-        ?
-        <Link to={el.PATH} tabIndex={isMenuActive ? 0 : -1} onClick={() => setIsMenuActive(false)} key={el.PATH}>
-          {el.CONTENT}
-        </Link >
-        :
-        <Link tabIndex={isMenuActive ? 0 : -1} to={el.PATH} onClick={() => setIsMenuActive(false)} key={el.PATH}>
-          {el.CONTENT}
-        </Link>
+      el.CONTENT === "LOGO" && (
+        (
+          <Link to={el.PATH} key={el.CONTENT} className={cn("z-10 w-32 text-black inline-flex flex-row items-center justify-center p-0")}>
+            <LogoIcon />
+          </Link>
+        )
+      )
+    )
+  })
+  const NAVLINKS = content.PUBLIC.NAVIGATION.map((el) => {
+    return (
+      el.CONTENT !== "LOGO" &&
+      <Link linkStyle={el.CONTENT === "Request a quote" && !isMobile ? "button" : "default"} to={el.PATH} key={el.CONTENT} className={cn(window.location.pathname === el.PATH ? "nav-links-active" : "", "text-lg text-white font-medium lg:text-black lg:font-normal")}>
+        {el.CONTENT}
+      </Link >
     )
   })
 
+  useEffect(() => {
+    if (!headerRef.current) return;
+  }, [headerRef]);
+
   return (
-    <header ref={headerRef} className="site h-[10svh] sticky p-4 z-10 top-0 bg-white sm:p-8">
+    <header ref={headerRef} className="site sticky h-fit p-4 z-10 top-0 bg-white sm:p-8 sm:py-4">
       <nav className="w-full h-full flex justify-between items-center">
-        <ul className="flex justify-between items-center w-full h-full">
-          <Link to={LOGO ? LOGO.PATH : "/"} className="z-10 w-32 text-black inline-flex flex-row items-center justify-center" onClick={() => setIsMenuActive(false)}>
-            <LogoIcon ref={logoRef} />
-          </Link>
-
-
-          {isMobile!.matches &&
-            (
-              <>
-                <div ref={linksRef} className="fixed flex flex-col p-4 opacity-0 justify-center gap-4 h-full bg-secondary w-1 bottom-0 left-0">
-                  {links}
-                </div>
-                <Hamburger setIsActive={setIsMenuActive} isActive={isMenuActive} />
-              </>
-            )
+        <ul ref={navigationRef} className="navigation flex justify-between items-center w-full h-full gap-4">
+          {LOGO}
+          <div className="fixed flex flex-col p-4 justify-center gap-4 h-full bg-secondary w-1 bottom-0 lg:relative lg:w-fit lg:items-center lg:flex-row lg:bg-transparent">
+            {NAVLINKS}
+          </div>
+          {isMobile &&
+            <Hamburger />
           }
-
-
         </ul>
       </nav>
     </header>
