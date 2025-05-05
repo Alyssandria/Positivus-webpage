@@ -26,7 +26,7 @@ export const Header = () => {
   const NAVLINKS = content.PUBLIC.NAVIGATION.map((el) => {
     return (
       el.CONTENT !== "LOGO" &&
-      <Link linkStyle={el.CONTENT === "Request a quote" && !isMobile ? "button" : "default"} to={el.PATH} key={el.CONTENT} className={cn(window.location.pathname === el.PATH ? "nav-links-active" : "", "text-lg text-white font-medium lg:text-black lg:font-normal")}>
+      <Link linkStyle={el.CONTENT === "Request a quote" && !isMobile ? "button" : "default"} to={el.PATH} key={el.CONTENT} className={cn(window.location.pathname === el.PATH ? "nav-links-active" : "", "text-lg text-white font-medium sm:text-5xl lg:text-black lg:font-normal lg:text-lg")}>
         {el.CONTENT}
       </Link >
     )
@@ -41,7 +41,7 @@ export const Header = () => {
       <nav className="w-full h-full flex justify-between items-center">
         <ul ref={navigationRef} className="navigation flex justify-between items-center w-full h-full gap-4">
           {LOGO}
-          <div className="fixed flex flex-col p-4 justify-center gap-4 h-full bg-secondary w-1 bottom-0 lg:relative lg:w-fit lg:items-center lg:flex-row lg:bg-transparent">
+          <div className="fixed flex flex-col p-4 justify-center gap-4 h-full bg-secondary w-1 bottom-0 sm:gap-8 lg:relative lg:w-fit lg:items-center lg:flex-row lg:bg-transparent">
             {NAVLINKS}
           </div>
           {isMobile &&
