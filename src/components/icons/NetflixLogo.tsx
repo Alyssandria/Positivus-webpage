@@ -3,6 +3,7 @@ export const NetflixLogo = () => (
   <BrandIcon
     viewBoxWidth={"126"}
     viewBoxHeight={"48"}
+    className="md:ml-8"
   >
     <g
       clipPath="url(#NetflixLogo_svg__a)"

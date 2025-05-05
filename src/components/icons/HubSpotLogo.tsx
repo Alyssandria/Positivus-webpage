@@ -3,6 +3,7 @@ export const HubSpotLogo = () => (
   <BrandIcon
     viewBoxWidth={"129"}
     viewBoxHeight={"48"}
+    className="md:mr-8"
   >
     <g
       clipPath="url(#HubSpotLogo_svg__a)"

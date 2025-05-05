@@ -41,7 +41,6 @@ const getCustomStyles = (i: number) => {
       circle: fillClassVariants[index === bgVariantArr.length - 1 ? bgVariantArr[0] : bgVariantArr[2]]
     }
   }
-
 }
 
 

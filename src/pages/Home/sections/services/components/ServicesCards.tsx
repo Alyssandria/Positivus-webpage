@@ -22,7 +22,7 @@ export const ServiceCard = ({ labels: title, ref, link, Icon, className, customS
 
         <div className="w-full relative flex items-end gap-4">
           <LinkArrowIcon className="shrink-0 size-8 md:size-10" arrowBG={customStyles.linkIcon.arrowBg} circleBG={customStyles.linkIcon.circleBg} />
-          <span className={cn("sr-only inline-block font-normal text-lg md:not-sr-only md:text-xl xl:text-2xl md:whitespace-nowrap", customStyles.linkTextColor)}>Learn More</span>
+          <span className={cn("sr-only inline-block font-normal text-lg md:not-sr-only md:text-xl  md:whitespace-nowrap", customStyles.linkTextColor)}>Learn More</span>
         </div>
 
         <div className="w-full place-self-center md:col-start-2 md:row-start-1 md:row-span-2">

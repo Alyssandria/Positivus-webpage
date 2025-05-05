@@ -13,7 +13,7 @@ export const BrandIcon = ({ children, viewBoxWidth, viewBoxHeight, className, ..
       width={111}
       height={48}
       viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
-      className={cn("w-20 grayscale-100 hover:grayscale-0", className)}
+      className={cn("w-20 sm:grayscale-100 sm:hover:grayscale-0 lg:w-40", className)}
       {...props}
     >
       {children}
