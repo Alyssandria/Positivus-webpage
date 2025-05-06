@@ -67,7 +67,7 @@ export const Hero = () => {
         <div className="row-span-3">
           <HeroIllustration className="size-full" />
         </div>
-        <p className="text-sm lg:text-lg xl:text-xl 2xl:text-3xl">{CONTENT.PUBLIC.MAIN.HOME.HERO.SUB_TITLE.CONTENT}</p>
+        <p className="text-sm lg:text-lg xl:text-xl 2xl:text-2xl 2xl:w-4/5">{CONTENT.PUBLIC.MAIN.HOME.HERO.SUB_TITLE.CONTENT}</p>
         <Link to={CONTENT.PUBLIC.MAIN.HOME.HERO.CTA.ACTION} linkStyle="button_bg" className="inline-block w-full text-center text-base lg:h-fit lg:self-center lg:w-fit">{CONTENT.PUBLIC.MAIN.HOME.HERO.CTA.CONTENT}</Link>
       </div>
       <div className="flex flex-col md:flex-row sm:px-8">
