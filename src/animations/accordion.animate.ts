@@ -1,6 +1,8 @@
 import { useGSAP } from "@gsap/react"
 import { gsap } from "gsap"
+import { relative } from "path";
 import { useEffect, useRef, useState } from "react";
+import { MdOpacity } from "react-icons/md";
 
 export const useAccordionAnimation = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -14,42 +16,51 @@ export const useAccordionAnimation = () => {
 
   useGSAP(() => {
     if (!accordionItemRef.current || !contentRef.current || !plusIconRef.current) return;
-
+    gsap.set(contentRef.current, {
+      position: "absolute",
+      visibility: "hidden",
+      height: "1px",
+      opacity: 0,
+      marginTop: "2rem",
+      borderTop: "1px solid black"
+    })
 
     timeline.current = gsap.timeline({ paused: true })
+      .set(contentRef.current, {
+        position: "absolute"
+      })
       .to(accordionItemRef.current, {
         duration: .1,
         backgroundColor: primaryBG,
       })
       .to(plusIconRef.current, {
-        duration: .2,
+        duration: .1,
         rotate: 90,
         display: "none"
-      }).to(minusIconRef.current, {
-        duration: .2,
+      })
+      .to(minusIconRef.current, {
+        duration: .1,
         display: "block"
       })
       .to(contentRef.current, {
         duration: .3,
-        marginTop: "2rem",
-        borderTop: "2px solid black",
-        paddingTop: "1em",
         position: "relative",
-        display: "block",
-        maxHeight: function() {
-          return `${contentRef.current!.scrollHeight}px`
-        },
         visibility: "visible",
-      }, "-=.5")
+
+        height: "auto",
+      }, "-=.1")
+      .to(contentRef.current, {
+        duration: .1,
+        opacity: 1
+      }, "+=.05")
   })
+
 
   useEffect(() => {
     if (!timeline.current) return;
 
     if (isActive) {
-      contentRef.current?.setAttribute("aria-hidden", "false");
       timeline.current.play();
-      contentRef.current?.setAttribute("aria-hidden", "true");
     } else {
       timeline.current.reversed(!timeline.current.reversed());
     }
