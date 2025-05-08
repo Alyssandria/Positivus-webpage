@@ -1,25 +1,31 @@
 import { LinkArrowIcon } from "@/components/icons/LinkArrowIcon";
 import { Link } from "@/components/ui/Link";
-import CONTENT from "@/lib/content/en_us.json"
-export const CaseStudyCards = () => {
-  const cardsArr = CONTENT.PUBLIC.MAIN.HOME.CASESTUDIES.CASES
-  const cards = cardsArr.map((el) => {
-    return (
-      <li key={el.CTA.PATH} className="w-[95%] shrink-0 snap-center flex justify-between flex-col gap-4 bg-secondary rounded-[45px] p-8">
-        <div>
-          <p className="text-white text-sm font-normal">{el.CONTENT}</p>
-        </div>
+import { cn } from "@/lib/utils";
+import { ComponentPropsWithRef } from "react";
+interface CaseStudyCardsProps extends ComponentPropsWithRef<"li"> {
+  data: {
+    CTA: {
+      PATH: string,
+      CONTENT: string
+    }
+    CONTENT: string
+  }
+}
 
-        <Link to={el.CTA.PATH} className="font-medium text-base text-primary inline-flex items-end gap-2">
-          <span>
-            {el.CTA.CONTENT}
-          </span>
-          <LinkArrowIcon className="size-8" />
-        </Link>
-      </li>)
-  });
-
+export const CaseStudyCards = ({ className, data, ...props }: CaseStudyCardsProps) => {
   return (
-    <ul className="flex w-full gap-2 cards-swipe p-4 overflow-x-scroll">{cards}</ul>
+    <li className={cn("w-[95%] max-lg:shrink-0 snap-center bg-secondary rounded-[45px] p-8 sm:gap-10 sm:p-12 lg:rounded-none lg:p-0 lg:hover:cursor-pointer not-last:lg:border-r not-last:pr-10 not-last:lg:border-r-white", className)} {...props}>
+      <Link to={data.CTA.PATH} className="w-full h-full flex justify-between flex-col gap-4">
+        <div>
+          <p className="text-white text-sm font-normal sm:text-lg lg:hover:text-gray-300">{data.CONTENT}</p>
+        </div>
+        <div className="font-medium text-base text-primary inline-flex items-end gap-2 sm:text-lg">
+          <span>
+            {data.CTA.CONTENT}
+          </span>
+          <LinkArrowIcon className="size-8 sm:size-10" />
+        </div>
+      </Link>
+    </li>
   )
 }
