@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
-import type { SVGProps } from "react";
 
 export const ContactIcon = ({ className, ...props }: React.ComponentPropsWithoutRef<"svg">) => (
   <svg
@@ -61,4 +60,3 @@ export const ContactIcon = ({ className, ...props }: React.ComponentPropsWithout
     />
   </svg>
 );
-export default SvgContactIcon;

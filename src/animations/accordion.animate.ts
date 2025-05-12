@@ -1,8 +1,6 @@
 import { useGSAP } from "@gsap/react"
 import { gsap } from "gsap"
-import { relative } from "path";
 import { useEffect, useRef, useState } from "react";
-import { MdOpacity } from "react-icons/md";
 
 export const useAccordionAnimation = () => {
   const [isActive, setIsActive] = useState<boolean>(false);

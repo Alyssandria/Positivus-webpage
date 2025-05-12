@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { ComponentPropsWithoutRef, SVGProps } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 export const ProposalIcon = ({ className, ...props }: ComponentPropsWithoutRef<"svg">) => (
   <svg
