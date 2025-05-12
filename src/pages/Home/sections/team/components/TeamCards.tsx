@@ -1,4 +1,4 @@
-import { TeamBg } from "@/components/icons/TeamBg";
+import { UserAvatar } from "@/components/icons/UserAvatar";
 import { cn } from "@/lib/utils";
 import { Linkedin } from "lucide-react";
 import { HTMLAttributes } from "react";
@@ -16,9 +16,9 @@ export const TeamCard = ({ className, data, ...props }: TeamCardProps) => {
 
   return (
     <div className={cn("w-full service-card-shadow border rounded-4xl max-xs:p-card p-card-mob divide-y space-y-8 divide-black", className)} {...props}>
-      <div className="flex relative gap-4 w-full pb-6">
-        <figure className="w-50">
-          <TeamBg imgLink={data.PROFILE} />
+      <div className="flex relative gap-4 w-full pb-6 sm:gap-8">
+        <figure className="w-52 sm:max-w-24">
+          <UserAvatar imgLink={data.PROFILE} className="size-full" />
           <figcaption className="sr-only">{`An avatar of ${data.NAME}`}</figcaption>
         </figure>
         <div className="w-full flex flex-col gap-1 justify-end">

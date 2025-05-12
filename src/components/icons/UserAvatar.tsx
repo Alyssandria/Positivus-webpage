@@ -1,10 +1,11 @@
-import { useId } from 'react';
+import { cn } from '@/lib/utils';
+import { ComponentPropsWithoutRef, useId } from 'react';
 
-interface TeamBgProps {
+interface TeamBgProps extends ComponentPropsWithoutRef<"svg"> {
   imgLink: string;
 }
 
-export const TeamBg = ({ imgLink, ...props }: TeamBgProps) => {
+export const UserAvatar = ({ className, imgLink, ...props }: TeamBgProps) => {
   // Generate unique ID prefix for this component instance
   const id = useId();
   const maskId = `mask-${id}`;
@@ -17,6 +18,7 @@ export const TeamBg = ({ imgLink, ...props }: TeamBgProps) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 106 103"
       fill="none"
+      className={cn(className)}
       {...props}
     >
       <path

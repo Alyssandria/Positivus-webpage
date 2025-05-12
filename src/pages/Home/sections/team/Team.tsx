@@ -12,12 +12,16 @@ export const Teams = () => {
   });
 
   return (
-    <Section title={TITLE} subTitle={SUBTITLE} >
-      <div className="flex flex-col gap-6">
-        {teamCards}
+    <Section title={TITLE} subTitle={SUBTITLE}>
+
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6 sm:grid sm:grid-cols-2 xl:grid-cols-3">
+          {teamCards}
+        </div>
+
+        <Link to={TEAM_CTA.ACTION} linkStyle="button_bg" className="text-center font-normal text-base inline-block w-full bg-black md:text-lg  lg:max-w-80 lg:self-end">{TEAM_CTA.CONTENT}</Link>
       </div>
 
-      <Link to={TEAM_CTA.ACTION} linkStyle="button_bg" className="text-center font-normal text-base inline-block w-full bg-black">{TEAM_CTA.CONTENT}</Link>
     </Section>
   )
 }
