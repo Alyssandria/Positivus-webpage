@@ -21,16 +21,16 @@ export const TeamCard = ({ className, data, ...props }: TeamCardProps) => {
           <UserAvatar imgLink={data.PROFILE} className="size-full" />
           <figcaption className="sr-only">{`An avatar of ${data.NAME}`}</figcaption>
         </figure>
-        <div className="w-full flex flex-col gap-1 justify-end">
-          <span className="font-bold block max-xs:w-min text-lg ">{data.NAME}</span>
-          <span className="inline-block font-medium">{data.TITLE}</span>
+        <div className="w-full flex flex-col gap-1 justify-end mt-8">
+          <span className="font-bold block max-xs:w-min text-lg sm:text-xl md:w-min lg:w-max">{data.NAME}</span>
+          <span className="inline-block font-normal">{data.TITLE}</span>
         </div>
         <div className="absolute p-2 size-8 top-0 right-0 bg-secondary rounded-full">
           <Linkedin className="size-full text-primary fill-primary" />
         </div>
       </div>
       <div>
-        <p className="font-medium">{data.BIO}</p>
+        <p>{data.BIO}</p>
       </div>
 
 

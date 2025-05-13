@@ -15,7 +15,7 @@ export const Teams = () => {
     <Section title={TITLE} subTitle={SUBTITLE}>
 
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-6 sm:grid sm:grid-cols-2 xl:grid-cols-3">
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-2 xl:grid-cols-3">
           {teamCards}
         </div>
 
